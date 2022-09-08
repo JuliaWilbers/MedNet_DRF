@@ -53,7 +53,6 @@ class BasicBlock(nn.Module):
 
     def forward(self, x):
         residual = x
-        print("BasisBlock")
         out = self.conv1(x)
         out = self.bn1(out)
         out = self.relu(out)
@@ -141,49 +140,18 @@ class ResNet(nn.Module):
             block, 256, layers[2], shortcut_type, stride=1, dilation=2)
         self.layer4 = self._make_layer(
             block, 512, layers[3], shortcut_type, stride=1, dilation=4)
+        
         #New added for classification
         outsize = 512
-        """
-        self.classification = nn.Sequential(
-            nn.AdaptiveAvgPool3d(1),
-            troch.Flatten(),
-            nn.Linear(outsize, 64),
-            nn.ReLU(),
-        )
-        """
+      
         self.adaptive_avg_pool3d = nn.AdaptiveAvgPool3d(1)
-       # self.flatten = torch.flatten()
+        #self.flatten = torch.flatten()
         self.linear = nn.Linear(outsize,2)
         self.ReLU = nn.ReLU()
         self.softmax = nn.Softmax()
         self.sigmoid = nn.Sigmoid()
-        """
-        self.conv_seg = nn.Sequential(
-            nn.ConvTranspose3d(
-                512 * block.expansion,
-                32,
-                2,
-                stride=2
-            ),
-            nn.BatchNorm3d(32),
-            nn.ReLU(inplace=True),
-            nn.Conv3d(
-                32,
-                32,
-                kernel_size=3,
-                stride=(1, 1, 1),
-                padding=(1, 1, 1),
-                bias=False),
-            nn.BatchNorm3d(32),
-            nn.ReLU(inplace=True),
-            nn.Conv3d(
-                32,
-                num_seg_classes,
-                kernel_size=1,
-                stride=(1, 1, 1),
-                bias=False)
-        )
-        """
+   
+   
         for m in self.modules():
             if isinstance(m, nn.Conv3d):
                 m.weight = nn.init.kaiming_normal(m.weight, mode='fan_out')
@@ -218,59 +186,26 @@ class ResNet(nn.Module):
         return nn.Sequential(*layers)
 
     def forward(self, x):
-        print("Start with input:" + str(x.size()))
-        print("conv1")
         x = self.conv1(x)
-        print(x.size())
-        print("bn1")
         x = self.bn1(x)
-        print(x.size())
-        print("relu")
         x = self.relu(x)
-        print(x.size())
-        print("maxpool")
         x = self.maxpool(x)
-        print(x.size())
-        print("Basisblock1")
         x = self.layer1(x)
-        print(x.size())
-        print("Basisblock2")
         x = self.layer2(x)
-        print(x.size())
-        print("Basisblock3")
         x = self.layer3(x)
-        print(x.size())
-        print("Basisblock4")
         x = self.layer4(x)
+        print('size after basisblock4')
         print(x.size())
-        #x = self.conv_seg(x)
-        #x = self.classification(x)
-        print("adaptive average pooling")
         x = self.adaptive_avg_pool3d(x)
         print(x.size())
-        print("flatten")
-        x = torch.flatten(x)
-        #print("x")
-        #print(x)
+        x = torch.flatten(x, start_dim=1)
         print(x.size())
-        print("linear")
         x = self.linear(x)
         print(x.size())
-        print("x after linear" + str(x))
-        print("relu")
         x = self.relu(x)
-        print("x after relu" + str(x))
-        #print("x")
-        #print(x)
-        #print(x.size())
-        print("softmax")
         x = self.softmax(x)
-        print("Output:" + str(x))
-        #print(x)
-        #x = self.sigmoid(x)
-        #print(x.size())
+       
         return x
-
 
 def resnet10(**kwargs):
     """Constructs a ResNet-10 model.

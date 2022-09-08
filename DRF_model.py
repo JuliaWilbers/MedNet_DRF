@@ -97,7 +97,7 @@ def generate_model(opt):
                 if pname.find(layer_name) >= 0:
                     new_parameters.append(p)
                     break
-
+        print('new_parameters' + str(new_parameters))
         new_parameters_id = list(map(id, new_parameters))
         base_parameters = list(filter(lambda p: id(p) not in new_parameters_id, model.parameters()))
         parameters = {'base_parameters': base_parameters, 

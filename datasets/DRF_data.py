@@ -61,30 +61,29 @@ class DRF_data(Dataset):
             ith_info = self.label_list[idx].split(" ")
             self.name = ith_info[0] + ".nii.gz"
             self.img_name = os.path.normpath(os.path.join(self.im_dir, self.name))
-            self.label_name = os.path.normpath(os.path.join(self.seg_dir, self.name))
+            #self.label_name = os.path.normpath(os.path.join(self.seg_dir, self.name))
             label = torch.tensor([float((ith_info[1])), float((ith_info[2]))])
-            #img_name = self.im_dir
-            #label_name = self.seg_dir
+           
             assert os.path.isfile(self.img_name)
-            assert os.path.isfile(self.label_name)
+            #assert os.path.isfile(self.label_name)
             img = nibabel.load(self.img_name)  # We have transposed the data from WHD format to DHW
             assert img is not None
-            mask = nibabel.load(self.label_name)
-            assert mask is not None
+            #mask = nibabel.load(self.label_name)
+            #assert mask is not None
             #
             #label = torch.Tensor([label]) 
-            print(self.name)
-            print(label)
+            
             # data processing
-            img_array, mask_array = self.__training_data_process__(img, mask)
+            img_array = self.__training_data_process__(img)
 
             # 2 tensor array
             img_array = self.__nii2tensorarray__(img_array)
-            mask_array = self.__nii2tensorarray__(mask_array)
+            #mask_array = self.__nii2tensorarray__(mask_array)
 
-            assert img_array.shape == mask_array.shape, "img shape:{} is not equal to mask shape:{}".format(
-                img_array.shape, mask_array.shape)
-            return img_array, mask_array, label
+            #assert img_array.shape == mask_array.shape, "img shape:{} is not equal to mask shape:{}".format(
+            #img_array.shape, mask_array.shape)
+            #return img_array, mask_array, label
+            return img_array, label
 
         elif self.phase == "test":
             # read image
@@ -121,15 +120,14 @@ class DRF_data(Dataset):
         out[volume == 0] = out_random[volume == 0]
         return out
 
-    def __training_data_process__(self, data, label):
+    def __training_data_process__(self, data):
         # crop data according net input size
         data = data.get_data()
-        label = label.get_data()
 
         # normalization datas
         data = self.__itensity_normalize_one_volume__(data)
 
-        return data, label
+        return data
 
     def __testing_data_process__(self, data):
         # crop data according net input size
