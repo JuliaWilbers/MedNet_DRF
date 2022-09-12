@@ -62,8 +62,8 @@ class DRF_data(Dataset):
             self.name = ith_info[0] + ".nii.gz"
             self.img_name = os.path.normpath(os.path.join(self.im_dir, self.name))
             #self.label_name = os.path.normpath(os.path.join(self.seg_dir, self.name))
-            label = torch.tensor([float((ith_info[1])), float((ith_info[2]))])
-           
+            #label = torch.tensor([float((ith_info[1])), float((ith_info[2]))])
+            label = torch.tensor([float(ith_info[1])])
             assert os.path.isfile(self.img_name)
             #assert os.path.isfile(self.label_name)
             img = nibabel.load(self.img_name)  # We have transposed the data from WHD format to DHW

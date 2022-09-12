@@ -20,7 +20,7 @@ def parse_opts():
         help='Path for image list file')
     parser.add_argument(
         '--label_list',
-        default='./toy_data/Labels_61_mednet.txt',
+        default='./toy_data/DRF_label_sets/set_1/train.txt',
         type=str,
         help='Path for label list file')
     parser.add_argument(
@@ -79,7 +79,7 @@ def parse_opts():
         'Path for resume model.')
     parser.add_argument(
         '--im_dir',
-        default='./toy_data/Images',
+        default='./toy_data/DRF_sets/set_1/train/',
         type=str,
         help='Image Directory')
     parser.add_argument(

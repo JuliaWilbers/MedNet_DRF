@@ -56,8 +56,9 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
                 volumes = volumes.cuda()
 
             optimizer.zero_grad()
-            output = model(volumes)
-            
+            output = torch.round(model(volumes))
+            print("output" + str(output))
+            print("labels" + str(labels))
             # resize label
             """[n, _, d, h, w] = out_masks.shape
             new_label_masks = np.zeros([n, d, h, w])
@@ -85,7 +86,7 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
           
            
             #loss_value_seg = loss_seg(out_masks, new_label_masks)
-            loss_value_clas = loss_clas(output, labels)
+            loss_value_clas = loss_clas(output.squeeze(), labels.squeeze())
 
             #loss = loss_value_seg
             loss = loss_value_clas
@@ -124,7 +125,7 @@ if __name__ == '__main__':
     sets = parse_opts()
     if sets.ci_test:
         sets.img_list = './toy_data/test_DRF.txt'
-        sets.im_dir = './toy_data/Images'
+        sets.im_dir = './toy_data/DRF_sets/set_1/train/'
         sets.seg_dir = './toy_data/Segmentations'
         sets.n_epochs = 1
         sets.no_cuda = True
@@ -172,7 +173,7 @@ if __name__ == '__main__':
     else:
         sets.pin_memory = True
     #training_dataset = DRF_data(sets.data_root, sets.im_dir, sets.seg_dir, sets.img_list, 61, sets)
-    training_dataset = DRF_data(sets.im_dir, sets.seg_dir, sets.img_list, sets.label_list, 61, sets)
+    training_dataset = DRF_data(sets.im_dir, sets.seg_dir, sets.img_list, sets.label_list, 49, sets)
     data_loader = DataLoader(training_dataset, batch_size=sets.batch_size, shuffle=False, num_workers=sets.num_workers,
                              pin_memory=sets.pin_memory)
     
