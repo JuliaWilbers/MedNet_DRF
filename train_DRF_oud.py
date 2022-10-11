@@ -17,50 +17,35 @@ from utils.logger import log
 from scipy import ndimage
 import os
 import torch.backends.cudnn as cudnn
-import csv 
-import logging
 
-
-def accuracy_fn(y_true, y_pred):
-    correct = torch.eq(y_true, y_pred).sum().item() 
-    acc = (correct / len(y_pred)) * 100 
-    return acc
+#cudnn.benchmark = True
+#print(torch.cuda.device_count())
 
 def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval, save_folder, sets):
     # settings
-    
-    logging.basicConfig(filename=results_file, mode = 'a', format='%(asctime)s - %(message)s', level = logging.INFO, force = True)
-    
     batches_per_epoch = len(data_loader)
-    #print("batches per epoch is" + str(batches_per_epoch))
-    #log.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
-    logger.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
+    print("batches per epoch is" + str(batches_per_epoch))
+    log.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
+    #loss_seg = nn.CrossEntropyLoss(ignore_index=-1)
+    #loss_clas = nn.MSELoss()
+    #loss_clas = nn.CrossEntropyLoss(ignore_index=-1)
     loss_clas = nn.BCELoss()
     
-    # define log file for results
-    print(results_file)
     print("Current setting is:")
     print(sets)
     print("\n\n")
     if not sets.no_cuda:
+        #loss_seg = loss_seg.cuda()
         loss_clas = loss_clas.cuda()
 
     model.train()
     train_time_sp = time.time()
- 
     for epoch in range(total_epochs):
         log.info('Start epoch {}'.format(epoch))
-        
-        
+
         scheduler.step()
         log.info('lr = {}'.format(scheduler.get_lr()))
-        
-        loss_total = 0
-        correct = 0
-        total = 0
-        epoch_loss = 0
-        batch_loss = 0
-        
+
         for batch_id, batch_data in enumerate(data_loader):
             
             # getting data batch
@@ -71,36 +56,47 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
                 volumes = volumes.cuda()
 
             optimizer.zero_grad()
+            output = torch.round(model(volumes))
             
-            #Posterior probabilites 
-            raw_output = model(volumes)
-            
-            output = torch.round(raw_output)
-            
-            #calculate acc and loss
-            #loss_value_clas = loss_clas(output.squeeze(), labels.squeeze())
-            loss_value_clas = loss_clas(raw_output.squeeze(), labels.squeeze())
-            #acc = accuracy_fn(labels.squeeze(), output.squeeze())
-            
-            #Save acc, loss and post prob 
-            correct = torch.eq(labels.squeeze(), output.squeeze()).sum().item() 
-            loss_total += loss_value_clas.item()
-            batch_loss += loss_value_clas.item() * batch_size
+            # resize label
+            """[n, _, d, h, w] = out_masks.shape
+            new_label_masks = np.zeros([n, d, h, w])
+            for label_id in range(n):
+                label_mask = label_masks[label_id]
+                [ori_c, ori_d, ori_h, ori_w] = label_mask.shape
+                label_mask = np.reshape(label_mask, [ori_d, ori_h, ori_w])
+                scale = [d * 1.0 / ori_d, h * 1.0 / ori_h, w * 1.0 / ori_w]
+                label_mask = ndimage.interpolation.zoom(label_mask, scale, order=0)
+                new_label_masks[label_id] = label_mask
 
-            total += labels.size(0)
+            new_label_masks = torch.tensor(new_label_masks).to(torch.int64)
+            if not sets.no_cuda:
+                new_label_masks = new_label_masks.cuda()
+            """
+            # calculating loss
+            # labels = torch.tensor([1, 0, 0, 1, 1])
+            # labels = torch.cuda.FloatTensor([1], device='cuda')
+            # labels = torch.FloatTensor([1])
+            # output = torch.FloatTensor([output.data])
+            # labels = torch.FloatTensor([labels.data])
+          
+            #labels.type(torch.FloatTensor)
+            #out_masks.type(torch.FloatTensor)
+          
+           
+            #loss_value_seg = loss_seg(out_masks, new_label_masks)
+            loss_value_clas = loss_clas(output.squeeze(), labels.squeeze())
 
-            #loss + backward
+            #loss = loss_value_seg
             loss = loss_value_clas
-            
             loss.backward()
             optimizer.step()
-            scheduler.step()
 
             avg_batch_time = (time.time() - train_time_sp) / (1 + batch_id_sp)
             log.info(
                 'Batch: {}-{} ({}), loss = {:.3f}, loss_seg = {:.3f}, avg_batch_time = {:.3f}' \
                     .format(epoch, batch_id, batch_id_sp, loss.item(), loss_value_clas.item(), avg_batch_time))
-                  
+
             if not sets.ci_test:
                 # save model
                 if batch_id == 0 and batch_id_sp != 0 and batch_id_sp % save_interval == 0:
@@ -112,22 +108,12 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
 
                     log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
                     torch.save({
-                        'epoch': epoch,
+                        'ecpoch': epoch,
                         'batch_id': batch_id,
                         'state_dict': model.state_dict(),
                         'optimizer': optimizer.state_dict()},
                         model_save_path)
-                        
-        
-            
-            if batch_id == (batches_per_epoch-1):              
-                loss_total = loss_total/len(data_loader)
-                acc_total = 100.*correct/total
-                logger.warning('Epoch = {}, Loss = {}, Acc = {}'.format(epoch, loss_total, acc_total))
-                
-        epoch_loss = batch_loss / len(data_loader)
-        logger.warning('Epoch = {}, Epoch_Loss = {}'.format(epoch, epoch_loss))
-                            
+
     print('Finished training')
     if sets.ci_test:
         exit()
@@ -136,55 +122,39 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
 if __name__ == '__main__':
     # settting
     sets = parse_opts()
-    sets.label_list = './toy_data/DRF_label_sets/set_1/train.txt'
-    #sets.label_list = './toy_data/DRF_label_augmented_sets/set_1/train.txt'
-    sets.im_dir = './toy_data/DRF_sets/set_1/train/'
-    #sets.im_dir = './toy_data/DRF_augmented_sets/set_1/'
-    sets.n_epochs = 100
-    sets.no_cuda = True
-    sets.pretrain_path = './pretrain/resnet_10.pth' #comment for method 2
-    sets.num_workers = 4
-    sets.model_depth = 10
-    sets.resnet_shortcut = 'A'
-    sets.input_D = 210 #Z
-    sets.input_H = 140 #Y
-    sets.input_W = 150 #X
-    sets.batch_size= 5
-    sets.set_name = 'set_1'
-    sets.method = 'method3_v11'
-    #sets.method = 'method3_a_v1'
-    sets.pretrained = True #set to False for method 2
-    sets.learning_rate = 0.00001 
-    results_file = "results/{}_{}_{}_{}_{}.log".format(sets.model, sets.model_depth, sets.phase, sets.set_name, sets.method)
-    sets.save_folder = "./trails/DRF_models/{}_{}_{}_{}".format(sets.model, sets.model_depth, sets.set_name, sets.method)
-    
-    
-    logger = logging.getLogger('mylogger')
-    handler = logging.FileHandler(results_file, mode = 'w')
-    logger.addHandler(handler)
-    
-    # getting mode
+    if sets.ci_test:
+        sets.img_list = './toy_data/test_DRF.txt'
+        sets.im_dir = './toy_data/DRF_sets/set_1/train/'
+        sets.seg_dir = './toy_data/Segmentations'
+        sets.n_epochs = 1
+        sets.no_cuda = True
+        sets.data_root = '.toy_data'
+        sets.pretrain_path = ''
+        sets.num_workers = 4
+        sets.model_depth = 10
+        sets.resnet_shortcut = 'A'
+        sets.input_D = 210 #Z
+        sets.input_H = 140 #Y
+        sets.input_W = 150 #X
+        sets.batch_size= 6
+
+    # getting model
     torch.manual_seed(sets.manual_seed)
     model, parameters = generate_model(sets)
-    params = [{'params': parameters, 'lr': sets.learning_rate}]
-   
+    #print(model)
+    #print('parameters' +  str(parameters))
    
     # optimizer
-    if sets.pretrained:
-        params = [
-           {'params': parameters['base_parameters'], 'lr': sets.learning_rate},
-            {'params': parameters['new_parameters'], 'lr': 0}]
-            
-            #{'params': parameters['new_parameters'], 'lr': sets.learning_rate * 100}]
+    if sets.ci_test:
+        params = [{'params': parameters, 'lr': sets.learning_rate}]
     else:
-        params =[{'params': parameters, 'lr': sets.learning_rate}]
-        
-    
+        params = [
+            {'params': parameters['base_parameters'], 'lr': sets.learning_rate},
+            {'params': parameters['new_parameters'], 'lr': sets.learning_rate * 100}
+        ]
     optimizer = torch.optim.SGD(params, momentum=0.9, weight_decay=1e-3)
     scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.99)
-    
-    logger.info('Learning rate: {}, Optimizer: {}, Scheduler: {}'.format(sets.learning_rate, optimizer.__class__.__name__, scheduler.__class__.__name__))
-    
+
     # train from resume
     if sets.resume_path:
         if os.path.isfile(sets.resume_path):
@@ -201,8 +171,8 @@ if __name__ == '__main__':
         sets.pin_memory = False
     else:
         sets.pin_memory = True
-    
-    training_dataset = DRF_data(sets.im_dir, sets.label_list, sets)
+    #training_dataset = DRF_data(sets.data_root, sets.im_dir, sets.seg_dir, sets.img_list, 61, sets)
+    training_dataset = DRF_data(sets.im_dir, sets.seg_dir, sets.img_list, sets.label_list, 49, sets)
     data_loader = DataLoader(training_dataset, batch_size=sets.batch_size, shuffle=False, num_workers=sets.num_workers,
                              pin_memory=sets.pin_memory)
     

@@ -19,8 +19,13 @@ def parse_opts():
         type=str,
         help='Path for image list file')
     parser.add_argument(
+        '--results_file',
+        default='./results/set_1.csv',
+        type=str,
+        help='Path for image list file')
+    parser.add_argument(
         '--label_list',
-        default='./toy_data/DRF_label_sets/set_1/train.txt',
+        default='./toy_data/DRF_label_sets/set_1/test.txt',
         type=str,
         help='Path for label list file')
     parser.add_argument(
@@ -79,7 +84,7 @@ def parse_opts():
         'Path for resume model.')
     parser.add_argument(
         '--im_dir',
-        default='./toy_data/DRF_sets/set_1/train/',
+        default='./toy_data/DRF_sets/set_1/test/',
         type=str,
         help='Image Directory')
     parser.add_argument(
@@ -89,14 +94,14 @@ def parse_opts():
         help='Segmentaion Directory')
     parser.add_argument(
         '--pretrain_path',
-        default='pretrain/resnet_50.pth',
+        default=None,
         type=str,
         help=
         'Path for pretrained model.')
     parser.add_argument(
         '--new_layer_names',
-        #default=['upsample1', 'cmp_layer3', 'upsample2', 'cmp_layer2', 'upsample3', 'cmp_layer1', 'upsample4', 'cmp_conv1', 'conv_seg'],
-        default=['conv_seg'],
+        default=['adaptive_avg_pool3d', 'flatten', 'linear', 'relu', 'sigmoid'],
+        #default=['conv_seg'],
         type=list,
         help='New layer except for backbone')
     parser.add_argument(
@@ -113,8 +118,18 @@ def parse_opts():
         type=str,
         help='(resnet | preresnet | wideresnet | resnext | densenet | ')
     parser.add_argument(
+        '--set_name',
+        default='set_1',
+        type=str,
+        help= 'Name of the current set')
+    parser.add_argument(
+        '--method',
+        default='method2',
+        type=str,
+        help= 'Method of the current set')
+    parser.add_argument(
         '--model_depth',
-        default=50,
+        default=10,
         type=int,
         help='Depth of resnet (10 | 18 | 34 | 50 | 101)')
     parser.add_argument(
@@ -126,7 +141,10 @@ def parse_opts():
         '--manual_seed', default=1, type=int, help='Manually set random seed')
     parser.add_argument(
         '--ci_test', action='store_true', help='If true, ci testing is used.')
+    parser.add_argument(
+        '--pretrained', action='store_true', help='If true, pre-trained weights used')
     args = parser.parse_args()
-    args.save_folder = "./trails/models/{}_{}".format(args.model, args.model_depth)
-    
+    args.save_folder = "./trails/DRF_models/{}_{}_{}_{}".format(args.model, args.model_depth, args.set_name, args.method)
+    #args.results_train_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
+    #args.results_test_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
     return args
