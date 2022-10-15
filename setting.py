@@ -50,7 +50,7 @@ def parse_opts():
         '--phase', default='train', type=str, help='Phase of train or test')
     parser.add_argument(
         '--save_intervals',
-        default=10,
+        default=50,
         type=int,
         help='Interation for saving model')
     parser.add_argument(
@@ -106,7 +106,7 @@ def parse_opts():
         help='New layer except for backbone')
     parser.add_argument(
         '--no_cuda', action='store_true', help='If true, cuda is not used.')
-    parser.set_defaults(no_cuda=True)
+    parser.set_defaults(no_cuda=False)
     parser.add_argument(
         '--gpu_id',
         nargs='+',

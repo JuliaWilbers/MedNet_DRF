@@ -71,7 +71,8 @@ def generate_model(opt):
     if not opt.no_cuda:
         if len(opt.gpu_id) > 1:
             model = model.cuda() 
-            model = nn.DataParallel(model, device_ids=opt.gpu_id)
+            #model = nn.DataParallel(model, device_ids=opt.gpu_id)
+            model = nn.DataParallel(model)
             net_dict = model.state_dict() 
         else:
             import os
