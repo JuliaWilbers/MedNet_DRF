@@ -1,0 +1,249 @@
+Learning rate: 0.001, Optimizer: Adam, Scheduler: StepLR
+100 epochs in total, 10 batches per epoch
+Epoch = 0, lr = [0.001, 0]
+Epoch = 0, Acc = 2.0408163265306123
+Epoch = 0, Epoch_Loss = 4.2220374047756195
+Epoch = 1, lr = [0.001, 0]
+Epoch = 1, Acc = 0.0
+Epoch = 1, Epoch_Loss = 3.4601769000291824
+Epoch = 2, lr = [0.001, 0]
+Epoch = 2, Acc = 0.0
+Epoch = 2, Epoch_Loss = 2.9909825176000595
+Epoch = 3, lr = [0.001, 0]
+Epoch = 3, Acc = 0.0
+Epoch = 3, Epoch_Loss = 2.8208195567131042
+Epoch = 4, lr = [0.001, 0]
+Epoch = 4, Acc = 0.0
+Epoch = 4, Epoch_Loss = 2.669515445828438
+Epoch = 5, lr = [0.001, 0]
+Epoch = 5, Acc = 0.0
+Epoch = 5, Epoch_Loss = 2.569923833012581
+Epoch = 6, lr = [0.001, 0]
+Epoch = 6, Acc = 0.0
+Epoch = 6, Epoch_Loss = 2.4787119403481483
+Epoch = 7, lr = [0.001, 0]
+Epoch = 7, Acc = 0.0
+Epoch = 7, Epoch_Loss = 2.4048338904976845
+Epoch = 8, lr = [0.001, 0]
+Epoch = 8, Acc = 2.0408163265306123
+Epoch = 8, Epoch_Loss = 2.3069613575935364
+Epoch = 9, lr = [0.001, 0]
+Epoch = 9, Acc = 2.0408163265306123
+Epoch = 9, Epoch_Loss = 2.2094947695732117
+Epoch = 10, lr = [0.001, 0]
+Epoch = 10, Acc = 2.0408163265306123
+Epoch = 10, Epoch_Loss = 2.194056048989296
+Epoch = 11, lr = [0.001, 0]
+Epoch = 11, Acc = 0.0
+Epoch = 11, Epoch_Loss = 2.1566335409879684
+Epoch = 12, lr = [0.001, 0]
+Epoch = 12, Acc = 2.0408163265306123
+Epoch = 12, Epoch_Loss = 2.1264064125716686
+Epoch = 13, lr = [0.001, 0]
+Epoch = 13, Acc = 2.0408163265306123
+Epoch = 13, Epoch_Loss = 2.0408309251070023
+Epoch = 14, lr = [0.001, 0]
+Epoch = 14, Acc = 0.0
+Epoch = 14, Epoch_Loss = 2.3678451776504517
+Epoch = 15, lr = [0.001, 0]
+Epoch = 15, Acc = 0.0
+Epoch = 15, Epoch_Loss = 2.475032016634941
+Epoch = 16, lr = [0.001, 0]
+Epoch = 16, Acc = 2.0408163265306123
+Epoch = 16, Epoch_Loss = 2.031206786632538
+Epoch = 17, lr = [0.001, 0]
+Epoch = 17, Acc = 0.0
+Epoch = 17, Epoch_Loss = 1.841891162097454
+Epoch = 18, lr = [0.001, 0]
+Epoch = 18, Acc = 0.0
+Epoch = 18, Epoch_Loss = 1.6994592398405075
+Epoch = 19, lr = [0.001, 0]
+Epoch = 19, Acc = 0.0
+Epoch = 19, Epoch_Loss = 1.6535161584615707
+Epoch = 20, lr = [0.001, 0]
+Epoch = 20, Acc = 2.0408163265306123
+Epoch = 20, Epoch_Loss = 1.577874168753624
+Epoch = 21, lr = [0.001, 0]
+Epoch = 21, Acc = 2.0408163265306123
+Epoch = 21, Epoch_Loss = 1.8354969546198845
+Epoch = 22, lr = [0.001, 0]
+Epoch = 22, Acc = 2.0408163265306123
+Epoch = 22, Epoch_Loss = 1.759676344692707
+Epoch = 23, lr = [0.001, 0]
+Epoch = 23, Acc = 2.0408163265306123
+Epoch = 23, Epoch_Loss = 1.8708512745797634
+Epoch = 24, lr = [0.001, 0]
+Epoch = 24, Acc = 0.0
+Epoch = 24, Epoch_Loss = 1.5083972364664078
+Epoch = 25, lr = [0.001, 0]
+Epoch = 25, Acc = 2.0408163265306123
+Epoch = 25, Epoch_Loss = 1.4238633997738361
+Epoch = 26, lr = [0.001, 0]
+Epoch = 26, Acc = 0.0
+Epoch = 26, Epoch_Loss = 1.4494059793651104
+Epoch = 27, lr = [0.001, 0]
+Epoch = 27, Acc = 0.0
+Epoch = 27, Epoch_Loss = 1.5618863217532635
+Epoch = 28, lr = [0.001, 0]
+Epoch = 28, Acc = 2.0408163265306123
+Epoch = 28, Epoch_Loss = 1.590662494301796
+Epoch = 29, lr = [0.001, 0]
+Epoch = 29, Acc = 2.0408163265306123
+Epoch = 29, Epoch_Loss = 1.513582967221737
+Epoch = 30, lr = [0.001, 0]
+Epoch = 30, Acc = 4.081632653061225
+Epoch = 30, Epoch_Loss = 1.5517664067447186
+Epoch = 31, lr = [0.001, 0]
+Epoch = 31, Acc = 4.081632653061225
+Epoch = 31, Epoch_Loss = 1.411248717457056
+Epoch = 32, lr = [0.001, 0]
+Epoch = 32, Acc = 2.0408163265306123
+Epoch = 32, Epoch_Loss = 1.3299406487494707
+Epoch = 33, lr = [0.001, 0]
+Epoch = 33, Acc = 4.081632653061225
+Epoch = 33, Epoch_Loss = 1.3474844433367252
+Epoch = 34, lr = [0.001, 0]
+Epoch = 34, Acc = 2.0408163265306123
+Epoch = 34, Epoch_Loss = 1.2077584750950336
+Epoch = 35, lr = [0.001, 0]
+Epoch = 35, Acc = 2.0408163265306123
+Epoch = 35, Epoch_Loss = 1.2470414973795414
+Epoch = 36, lr = [0.001, 0]
+Epoch = 36, Acc = 2.0408163265306123
+Epoch = 36, Epoch_Loss = 1.1603204756975174
+Epoch = 37, lr = [0.001, 0]
+Epoch = 37, Acc = 2.0408163265306123
+Epoch = 37, Epoch_Loss = 1.0897339042276144
+Epoch = 38, lr = [0.001, 0]
+Epoch = 38, Acc = 2.0408163265306123
+Epoch = 38, Epoch_Loss = 1.1746053267270327
+Epoch = 39, lr = [0.001, 0]
+Epoch = 39, Acc = 4.081632653061225
+Epoch = 39, Epoch_Loss = 1.2055300548672676
+Epoch = 40, lr = [0.001, 0]
+Epoch = 40, Acc = 4.081632653061225
+Epoch = 40, Epoch_Loss = 1.1044911183416843
+Epoch = 41, lr = [0.001, 0]
+Epoch = 41, Acc = 2.0408163265306123
+Epoch = 41, Epoch_Loss = 1.0263727838173509
+Epoch = 42, lr = [0.001, 0]
+Epoch = 42, Acc = 4.081632653061225
+Epoch = 42, Epoch_Loss = 1.1185854133218527
+Epoch = 43, lr = [0.001, 0]
+Epoch = 43, Acc = 2.0408163265306123
+Epoch = 43, Epoch_Loss = 1.126553438603878
+Epoch = 44, lr = [0.001, 0]
+Epoch = 44, Acc = 2.0408163265306123
+Epoch = 44, Epoch_Loss = 1.1199540477246046
+Epoch = 45, lr = [0.001, 0]
+Epoch = 45, Acc = 2.0408163265306123
+Epoch = 45, Epoch_Loss = 1.0518016070127487
+Epoch = 46, lr = [0.001, 0]
+Epoch = 46, Acc = 2.0408163265306123
+Epoch = 46, Epoch_Loss = 1.082006422802806
+Epoch = 47, lr = [0.001, 0]
+Epoch = 47, Acc = 2.0408163265306123
+Epoch = 47, Epoch_Loss = 1.033828653395176
+Epoch = 48, lr = [0.001, 0]
+Epoch = 48, Acc = 4.081632653061225
+Epoch = 48, Epoch_Loss = 1.0490804053843021
+Epoch = 49, lr = [0.001, 0]
+Epoch = 49, Acc = 2.0408163265306123
+Epoch = 49, Epoch_Loss = 0.9477459862828255
+Epoch = 50, lr = [0.001, 0]
+Epoch = 50, Acc = 4.081632653061225
+Epoch = 50, Epoch_Loss = 0.93278316128999
+Epoch = 51, lr = [0.001, 0]
+Epoch = 51, Acc = 4.081632653061225
+Epoch = 51, Epoch_Loss = 0.8778840452432632
+Epoch = 52, lr = [0.001, 0]
+Epoch = 52, Acc = 2.0408163265306123
+Epoch = 52, Epoch_Loss = 0.8478206777945161
+Epoch = 53, lr = [0.001, 0]
+Epoch = 53, Acc = 6.122448979591836
+Epoch = 53, Epoch_Loss = 0.8753510117530823
+Epoch = 54, lr = [0.001, 0]
+Epoch = 54, Acc = 4.081632653061225
+Epoch = 54, Epoch_Loss = 0.8455338180065155
+Epoch = 55, lr = [0.001, 0]
+Epoch = 55, Acc = 4.081632653061225
+Epoch = 55, Epoch_Loss = 0.8424842916429043
+Epoch = 56, lr = [0.001, 0]
+Epoch = 56, Acc = 6.122448979591836
+Epoch = 56, Epoch_Loss = 0.7945840246975422
+Epoch = 57, lr = [0.001, 0]
+Epoch = 57, Acc = 4.081632653061225
+Epoch = 57, Epoch_Loss = 0.8080030335113406
+Epoch = 58, lr = [0.001, 0]
+Epoch = 58, Acc = 6.122448979591836
+Epoch = 58, Epoch_Loss = 0.7975715026259422
+Epoch = 59, lr = [0.001, 0]
+Epoch = 59, Acc = 2.0408163265306123
+Epoch = 59, Epoch_Loss = 0.88908451795578
+Epoch = 60, lr = [0.001, 0]
+Epoch = 60, Acc = 6.122448979591836
+Epoch = 60, Epoch_Loss = 0.804056728258729
+Epoch = 61, lr = [0.001, 0]
+Epoch = 61, Acc = 4.081632653061225
+Epoch = 61, Epoch_Loss = 0.7317448779940605
+Epoch = 62, lr = [0.001, 0]
+Epoch = 62, Acc = 4.081632653061225
+Epoch = 62, Epoch_Loss = 0.6688275160267949
+Epoch = 63, lr = [0.001, 0]
+Epoch = 63, Acc = 4.081632653061225
+Epoch = 63, Epoch_Loss = 0.6491313520818949
+Epoch = 64, lr = [0.001, 0]
+Epoch = 64, Acc = 6.122448979591836
+Epoch = 64, Epoch_Loss = 0.6341499229893088
+Epoch = 65, lr = [0.001, 0]
+Epoch = 65, Acc = 4.081632653061225
+Epoch = 65, Epoch_Loss = 0.665386263281107
+Epoch = 66, lr = [0.001, 0]
+Epoch = 66, Acc = 6.122448979591836
+Epoch = 66, Epoch_Loss = 0.6565997544676065
+Epoch = 67, lr = [0.001, 0]
+Epoch = 67, Acc = 2.0408163265306123
+Epoch = 67, Epoch_Loss = 0.6817502481862903
+Epoch = 68, lr = [0.001, 0]
+Epoch = 68, Acc = 6.122448979591836
+Epoch = 68, Epoch_Loss = 0.6393760368227959
+Epoch = 69, lr = [0.001, 0]
+Epoch = 69, Acc = 6.122448979591836
+Epoch = 69, Epoch_Loss = 0.7626834874972701
+Epoch = 70, lr = [0.001, 0]
+Epoch = 70, Acc = 4.081632653061225
+Epoch = 70, Epoch_Loss = 0.7397378189489245
+Epoch = 71, lr = [0.001, 0]
+Epoch = 71, Acc = 4.081632653061225
+Epoch = 71, Epoch_Loss = 0.7671964056789875
+Epoch = 72, lr = [0.001, 0]
+Epoch = 72, Acc = 6.122448979591836
+Epoch = 72, Epoch_Loss = 0.7043071473017335
+Epoch = 73, lr = [0.001, 0]
+Epoch = 73, Acc = 4.081632653061225
+Epoch = 73, Epoch_Loss = 0.7120166895911098
+Epoch = 74, lr = [0.001, 0]
+Epoch = 74, Acc = 6.122448979591836
+Epoch = 74, Epoch_Loss = 0.6275321068242192
+Epoch = 75, lr = [0.001, 0]
+Epoch = 75, Acc = 6.122448979591836
+Epoch = 75, Epoch_Loss = 0.6276633595116436
+Epoch = 76, lr = [0.001, 0]
+Epoch = 76, Acc = 6.122448979591836
+Epoch = 76, Epoch_Loss = 0.5923465024679899
+Epoch = 77, lr = [0.001, 0]
+Epoch = 77, Acc = 6.122448979591836
+Epoch = 77, Epoch_Loss = 0.5935632870532572
+Epoch = 78, lr = [0.001, 0]
+Epoch = 78, Acc = 6.122448979591836
+Epoch = 78, Epoch_Loss = 0.5458712130784988
+Epoch = 79, lr = [0.001, 0]
+Epoch = 79, Acc = 8.16326530612245
+Epoch = 79, Epoch_Loss = 0.5147361443378031
+Epoch = 80, lr = [0.001, 0]
+Epoch = 80, Acc = 6.122448979591836
+Epoch = 80, Epoch_Loss = 0.48486287659034133
+Epoch = 81, lr = [0.001, 0]
+Epoch = 81, Acc = 8.16326530612245
+Epoch = 81, Epoch_Loss = 0.4688034737482667
+Epoch = 82, lr = [0.001, 0]

@@ -1,0 +1,1030 @@
+Learning rate: 0.001, Optimizer: Adam, Scheduler: NoneType
+100 epochs in total, 10 batches per epoch
+Epoch = 0, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 0, Acc = 0.0
+Epoch = 0, Epoch_Loss = 3.314980149269104
+Epoch = 1, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 1, Acc = 0.0
+Epoch = 1, Epoch_Loss = 3.250302344560623
+Epoch = 2, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 2, Acc = 0.0
+Epoch = 2, Epoch_Loss = 3.2140422463417053
+Epoch = 3, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 3, Acc = 0.0
+Epoch = 3, Epoch_Loss = 3.167852059006691
+Epoch = 4, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 4, Acc = 0.0
+Epoch = 4, Epoch_Loss = 3.100434973835945
+Epoch = 5, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 5, Acc = 0.0
+Epoch = 5, Epoch_Loss = 3.0109674483537674
+Epoch = 6, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 6, Acc = 2.0408163265306123
+Epoch = 6, Epoch_Loss = 2.8553233295679092
+Epoch = 7, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 7, Acc = 2.0408163265306123
+Epoch = 7, Epoch_Loss = 2.7207519859075546
+Epoch = 8, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 8, Acc = 2.0408163265306123
+Epoch = 8, Epoch_Loss = 2.579075500369072
+Epoch = 9, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 9, Acc = 0.0
+Epoch = 9, Epoch_Loss = 2.4523217976093292
+Epoch = 10, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 10, Acc = 0.0
+Epoch = 10, Epoch_Loss = 2.3196538984775543
+Epoch = 11, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 11, Acc = 2.0408163265306123
+Epoch = 11, Epoch_Loss = 2.166301280260086
+Epoch = 12, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 12, Acc = 2.0408163265306123
+Epoch = 12, Epoch_Loss = 2.0702257081866264
+Epoch = 13, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 13, Acc = 0.0
+Epoch = 13, Epoch_Loss = 2.004415675997734
+Epoch = 14, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 14, Acc = 4.081632653061225
+Epoch = 14, Epoch_Loss = 1.9723899886012077
+Epoch = 15, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 15, Acc = 2.0408163265306123
+Epoch = 15, Epoch_Loss = 2.0034074559807777
+Epoch = 16, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 16, Acc = 2.0408163265306123
+Epoch = 16, Epoch_Loss = 1.9290660843253136
+Epoch = 17, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 17, Acc = 0.0
+Epoch = 17, Epoch_Loss = 1.9160528182983398
+Epoch = 18, lr = 0.001
+Data loading start
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Data loading ended
+Before forward pass
+After forward pass
+Before backward
+After backward
+Epoch = 18, Acc = 6.122448979591836
+Epoch = 18, Epoch_Loss = 1.7495285868644714
+Epoch = 19, lr = 0.001
+Data loading start

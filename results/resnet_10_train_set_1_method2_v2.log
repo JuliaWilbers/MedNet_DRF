@@ -1,0 +1,202 @@
+Learning rate: 1e-05, Optimizer: SGD, Scheduler: ExponentialLR
+100 epochs in total, 10 batches per epoch
+Epoch = 0, Loss = 0.6539603173732758, Acc = 0.0
+Epoch = 0, Epoch_Loss = 3.269801586866379
+Epoch = 1, Loss = 0.6524501204490661, Acc = 0.0
+Epoch = 1, Epoch_Loss = 3.262250602245331
+Epoch = 2, Loss = 0.6508293509483337, Acc = 0.0
+Epoch = 2, Epoch_Loss = 3.2541467547416687
+Epoch = 3, Loss = 0.6493964433670044, Acc = 0.0
+Epoch = 3, Epoch_Loss = 3.246982216835022
+Epoch = 4, Loss = 0.6481966614723206, Acc = 0.0
+Epoch = 4, Epoch_Loss = 3.240983307361603
+Epoch = 5, Loss = 0.6472023367881775, Acc = 0.0
+Epoch = 5, Epoch_Loss = 3.2360116839408875
+Epoch = 6, Loss = 0.6463782548904419, Acc = 0.0
+Epoch = 6, Epoch_Loss = 3.2318912744522095
+Epoch = 7, Loss = 0.6456909894943237, Acc = 0.0
+Epoch = 7, Epoch_Loss = 3.2284549474716187
+Epoch = 8, Loss = 0.6451140880584717, Acc = 0.0
+Epoch = 8, Epoch_Loss = 3.2255704402923584
+Epoch = 9, Loss = 0.6446264028549195, Acc = 0.0
+Epoch = 9, Epoch_Loss = 3.223132014274597
+Epoch = 10, Loss = 0.6442120492458343, Acc = 0.0
+Epoch = 10, Epoch_Loss = 3.2210602462291718
+Epoch = 11, Loss = 0.6438573777675629, Acc = 0.0
+Epoch = 11, Epoch_Loss = 3.2192868888378143
+Epoch = 12, Loss = 0.6435526221990585, Acc = 0.0
+Epoch = 12, Epoch_Loss = 3.2177631109952927
+Epoch = 13, Loss = 0.6432893991470336, Acc = 0.0
+Epoch = 13, Epoch_Loss = 3.2164469957351685
+Epoch = 14, Loss = 0.643061238527298, Acc = 0.0
+Epoch = 14, Epoch_Loss = 3.21530619263649
+Epoch = 15, Loss = 0.6428627908229828, Acc = 0.0
+Epoch = 15, Epoch_Loss = 3.214313954114914
+Epoch = 16, Loss = 0.6426896423101425, Acc = 0.0
+Epoch = 16, Epoch_Loss = 3.2134482115507126
+Epoch = 17, Loss = 0.6425382524728775, Acc = 0.0
+Epoch = 17, Epoch_Loss = 3.2126912623643875
+Epoch = 18, Loss = 0.6424054563045501, Acc = 0.0
+Epoch = 18, Epoch_Loss = 3.212027281522751
+Epoch = 19, Loss = 0.6422887414693832, Acc = 0.0
+Epoch = 19, Epoch_Loss = 3.211443707346916
+Epoch = 20, Loss = 0.6421859562397003, Acc = 0.0
+Epoch = 20, Epoch_Loss = 3.2109297811985016
+Epoch = 21, Loss = 0.6420952767133713, Acc = 0.0
+Epoch = 21, Epoch_Loss = 3.2104763835668564
+Epoch = 22, Loss = 0.6420152753591537, Acc = 0.0
+Epoch = 22, Epoch_Loss = 3.2100763767957687
+Epoch = 23, Loss = 0.6419444918632508, Acc = 0.0
+Epoch = 23, Epoch_Loss = 3.2097224593162537
+Epoch = 24, Loss = 0.641881775856018, Acc = 0.0
+Epoch = 24, Epoch_Loss = 3.2094088792800903
+Epoch = 25, Loss = 0.6418262124061584, Acc = 0.0
+Epoch = 25, Epoch_Loss = 3.2091310620307922
+Epoch = 26, Loss = 0.6417769134044647, Acc = 0.0
+Epoch = 26, Epoch_Loss = 3.2088845670223236
+Epoch = 27, Loss = 0.6417331844568253, Acc = 0.0
+Epoch = 27, Epoch_Loss = 3.2086659222841263
+Epoch = 28, Loss = 0.6416943073272705, Acc = 0.0
+Epoch = 28, Epoch_Loss = 3.2084715366363525
+Epoch = 29, Loss = 0.6416597098112107, Acc = 0.0
+Epoch = 29, Epoch_Loss = 3.208298549056053
+Epoch = 30, Loss = 0.6416288763284683, Acc = 0.0
+Epoch = 30, Epoch_Loss = 3.2081443816423416
+Epoch = 31, Loss = 0.6416014641523361, Acc = 0.0
+Epoch = 31, Epoch_Loss = 3.2080073207616806
+Epoch = 32, Loss = 0.6415771156549454, Acc = 0.0
+Epoch = 32, Epoch_Loss = 3.207885578274727
+Epoch = 33, Loss = 0.6415553659200668, Acc = 0.0
+Epoch = 33, Epoch_Loss = 3.207776829600334
+Epoch = 34, Loss = 0.6415359586477279, Acc = 0.0
+Epoch = 34, Epoch_Loss = 3.20767979323864
+Epoch = 35, Loss = 0.6415187001228333, Acc = 0.0
+Epoch = 35, Epoch_Loss = 3.2075935006141663
+Epoch = 36, Loss = 0.6415032565593719, Acc = 0.0
+Epoch = 36, Epoch_Loss = 3.2075162827968597
+Epoch = 37, Loss = 0.6414894789457322, Acc = 0.0
+Epoch = 37, Epoch_Loss = 3.2074473947286606
+Epoch = 38, Loss = 0.6414771169424057, Acc = 0.0
+Epoch = 38, Epoch_Loss = 3.2073855847120285
+Epoch = 39, Loss = 0.641466173529625, Acc = 0.0
+Epoch = 39, Epoch_Loss = 3.2073308676481247
+Epoch = 40, Loss = 0.6414563447237015, Acc = 0.0
+Epoch = 40, Epoch_Loss = 3.2072817236185074
+Epoch = 41, Loss = 0.6414476543664932, Acc = 0.0
+Epoch = 41, Epoch_Loss = 3.207238271832466
+Epoch = 42, Loss = 0.641439801454544, Acc = 0.0
+Epoch = 42, Epoch_Loss = 3.2071990072727203
+Epoch = 43, Loss = 0.6414328068494797, Acc = 0.0
+Epoch = 43, Epoch_Loss = 3.2071640342473984
+Epoch = 44, Loss = 0.6414265602827072, Acc = 0.0
+Epoch = 44, Epoch_Loss = 3.207132801413536
+Epoch = 45, Loss = 0.6414209812879562, Acc = 0.0
+Epoch = 45, Epoch_Loss = 3.207104906439781
+Epoch = 46, Loss = 0.6414159625768662, Acc = 0.0
+Epoch = 46, Epoch_Loss = 3.2070798128843307
+Epoch = 47, Loss = 0.6414115250110626, Acc = 0.0
+Epoch = 47, Epoch_Loss = 3.207057625055313
+Epoch = 48, Loss = 0.641407510638237, Acc = 0.0
+Epoch = 48, Epoch_Loss = 3.207037553191185
+Epoch = 49, Loss = 0.6414039462804795, Acc = 0.0
+Epoch = 49, Epoch_Loss = 3.207019731402397
+Epoch = 50, Loss = 0.6414007604122162, Acc = 0.0
+Epoch = 50, Epoch_Loss = 3.207003802061081
+Epoch = 51, Loss = 0.6413979083299637, Acc = 0.0
+Epoch = 51, Epoch_Loss = 3.2069895416498184
+Epoch = 52, Loss = 0.6413953125476837, Acc = 0.0
+Epoch = 52, Epoch_Loss = 3.2069765627384186
+Epoch = 53, Loss = 0.6413930416107178, Acc = 0.0
+Epoch = 53, Epoch_Loss = 3.206965208053589
+Epoch = 54, Loss = 0.641390997171402, Acc = 0.0
+Epoch = 54, Epoch_Loss = 3.20695498585701
+Epoch = 55, Loss = 0.6413891404867172, Acc = 0.0
+Epoch = 55, Epoch_Loss = 3.206945702433586
+Epoch = 56, Loss = 0.6413875073194504, Acc = 0.0
+Epoch = 56, Epoch_Loss = 3.206937536597252
+Epoch = 57, Loss = 0.6413860708475113, Acc = 0.0
+Epoch = 57, Epoch_Loss = 3.2069303542375565
+Epoch = 58, Loss = 0.641384682059288, Acc = 0.0
+Epoch = 58, Epoch_Loss = 3.20692341029644
+Epoch = 59, Loss = 0.6413835495710373, Acc = 0.0
+Epoch = 59, Epoch_Loss = 3.2069177478551865
+Epoch = 60, Loss = 0.6413825362920761, Acc = 0.0
+Epoch = 60, Epoch_Loss = 3.2069126814603806
+Epoch = 61, Loss = 0.6413815945386887, Acc = 0.0
+Epoch = 61, Epoch_Loss = 3.2069079726934433
+Epoch = 62, Loss = 0.6413807392120361, Acc = 0.0
+Epoch = 62, Epoch_Loss = 3.2069036960601807
+Epoch = 63, Loss = 0.6413800150156022, Acc = 0.0
+Epoch = 63, Epoch_Loss = 3.2069000750780106
+Epoch = 64, Loss = 0.6413793653249741, Acc = 0.0
+Epoch = 64, Epoch_Loss = 3.2068968266248703
+Epoch = 65, Loss = 0.6413787782192231, Acc = 0.0
+Epoch = 65, Epoch_Loss = 3.206893891096115
+Epoch = 66, Loss = 0.6413782417774201, Acc = 0.0
+Epoch = 66, Epoch_Loss = 3.2068912088871
+Epoch = 67, Loss = 0.6413777649402619, Acc = 0.0
+Epoch = 67, Epoch_Loss = 3.206888824701309
+Epoch = 68, Loss = 0.6413773387670517, Acc = 0.0
+Epoch = 68, Epoch_Loss = 3.2068866938352585
+Epoch = 69, Loss = 0.6413769721984863, Acc = 0.0
+Epoch = 69, Epoch_Loss = 3.2068848609924316
+Epoch = 70, Loss = 0.6413766473531723, Acc = 0.0
+Epoch = 70, Epoch_Loss = 3.2068832367658615
+Epoch = 71, Loss = 0.6413763672113418, Acc = 0.0
+Epoch = 71, Epoch_Loss = 3.2068818360567093
+Epoch = 72, Loss = 0.6413761287927627, Acc = 0.0
+Epoch = 72, Epoch_Loss = 3.206880643963814
+Epoch = 73, Loss = 0.6413759112358093, Acc = 0.0
+Epoch = 73, Epoch_Loss = 3.2068795561790466
+Epoch = 74, Loss = 0.6413757294416428, Acc = 0.0
+Epoch = 74, Epoch_Loss = 3.206878647208214
+Epoch = 75, Loss = 0.6413755506277085, Acc = 0.0
+Epoch = 75, Epoch_Loss = 3.206877753138542
+Epoch = 76, Loss = 0.6413753956556321, Acc = 0.0
+Epoch = 76, Epoch_Loss = 3.20687697827816
+Epoch = 77, Loss = 0.6413752883672714, Acc = 0.0
+Epoch = 77, Epoch_Loss = 3.206876441836357
+Epoch = 78, Loss = 0.6413751661777496, Acc = 0.0
+Epoch = 78, Epoch_Loss = 3.206875830888748
+Epoch = 79, Loss = 0.6413750797510147, Acc = 0.0
+Epoch = 79, Epoch_Loss = 3.2068753987550735
+Epoch = 80, Loss = 0.6413750171661377, Acc = 0.0
+Epoch = 80, Epoch_Loss = 3.2068750858306885
+Epoch = 81, Loss = 0.6413749575614929, Acc = 0.0
+Epoch = 81, Epoch_Loss = 3.2068747878074646
+Epoch = 82, Loss = 0.6413749009370804, Acc = 0.0
+Epoch = 82, Epoch_Loss = 3.206874504685402
+Epoch = 83, Loss = 0.6413748443126679, Acc = 0.0
+Epoch = 83, Epoch_Loss = 3.2068742215633392
+Epoch = 84, Loss = 0.6413748413324356, Acc = 0.0
+Epoch = 84, Epoch_Loss = 3.206874206662178
+Epoch = 85, Loss = 0.6413748174905777, Acc = 0.0
+Epoch = 85, Epoch_Loss = 3.2068740874528885
+Epoch = 86, Loss = 0.6413747936487197, Acc = 0.0
+Epoch = 86, Epoch_Loss = 3.206873968243599
+Epoch = 87, Loss = 0.6413747608661652, Acc = 0.0
+Epoch = 87, Epoch_Loss = 3.206873804330826
+Epoch = 88, Loss = 0.6413747489452362, Acc = 0.0
+Epoch = 88, Epoch_Loss = 3.206873744726181
+Epoch = 89, Loss = 0.6413747668266296, Acc = 0.0
+Epoch = 89, Epoch_Loss = 3.206873834133148
+Epoch = 90, Loss = 0.6413747161626816, Acc = 0.0
+Epoch = 90, Epoch_Loss = 3.206873580813408
+Epoch = 91, Loss = 0.6413747131824493, Acc = 0.0
+Epoch = 91, Epoch_Loss = 3.2068735659122467
+Epoch = 92, Loss = 0.6413747370243073, Acc = 0.0
+Epoch = 92, Epoch_Loss = 3.2068736851215363
+Epoch = 93, Loss = 0.6413747251033783, Acc = 0.0
+Epoch = 93, Epoch_Loss = 3.2068736255168915
+Epoch = 94, Loss = 0.6413747221231461, Acc = 0.0
+Epoch = 94, Epoch_Loss = 3.2068736106157303
+Epoch = 95, Loss = 0.6413747429847717, Acc = 0.0
+Epoch = 95, Epoch_Loss = 3.2068737149238586
+Epoch = 96, Loss = 0.6413747310638428, Acc = 0.0
+Epoch = 96, Epoch_Loss = 3.206873655319214
+Epoch = 97, Loss = 0.6413747400045395, Acc = 0.0
+Epoch = 97, Epoch_Loss = 3.2068737000226974
+Epoch = 98, Loss = 0.6413747131824493, Acc = 0.0
+Epoch = 98, Epoch_Loss = 3.2068735659122467
+Epoch = 99, Loss = 0.6413747370243073, Acc = 0.0
+Epoch = 99, Epoch_Loss = 3.2068736851215363

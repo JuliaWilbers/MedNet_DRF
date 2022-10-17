@@ -1,0 +1,2 @@
+Learning rate: 1e-07, Optimizer: SGD, Scheduler: ExponentialLR
+100 epochs in total, 10 batches per epoch

@@ -1,0 +1,7 @@
+Learning rate: 0.001, Optimizer: SGD, Scheduler: ExponentialLR
+100 epochs in total, 10 batches per epoch
+Epoch = 0, Loss = 9.394547176361083, Acc = 0.0
+Epoch = 1, Loss = 9.394547176361083, Acc = 0.0
+Epoch = 2, Loss = 9.394547176361083, Acc = 0.0
+Epoch = 3, Loss = 9.394547176361083, Acc = 0.0
+Epoch = 4, Loss = 9.394547176361083, Acc = 0.0

@@ -1,0 +1,24 @@
+Learning rate: 1e-05, Optimizer: SGD, Scheduler: ExponentialLR
+100 epochs in total, 108 batches per epoch
+Epoch = 0, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 1, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 2, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 3, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 4, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 5, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 6, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 7, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 8, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 9, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 10, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 11, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 12, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 13, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 14, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 15, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 16, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 17, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 18, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 19, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 20, Loss = 9.056834777196249, Acc = 0.0
+Epoch = 21, Loss = 9.056834777196249, Acc = 0.0
