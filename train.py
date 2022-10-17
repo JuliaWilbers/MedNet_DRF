@@ -152,3 +152,4 @@ if __name__ == '__main__':
 
     # training
     train(data_loader, model, optimizer, scheduler, total_epochs=sets.n_epochs, save_interval=sets.save_intervals, save_folder=sets.save_folder, sets=sets) 
+    test

@@ -1,0 +1,5 @@
+Learning rate: 0.001, Optimizer: Adam, Scheduler: NoneType
+100 epochs in total, 108 batches per epoch
+Epoch = 0, lr = 0.001
+Epoch, 0, Epoch_Loss, 4.2485930496412845, Accuracy, 63.265306122448976
+Epoch = 1, lr = 0.001

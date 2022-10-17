@@ -1,0 +1,12 @@
+Patient = ('EMC0286',), Post_prob = 0.5115139484405518, Label = 0.0
+Patient = ('EMC0860',), Post_prob = 0.5116658210754395, Label = 0.0
+Patient = ('EMC1255',), Post_prob = 0.5115621089935303, Label = 0.0
+Patient = ('EMC0740',), Post_prob = 0.5115360617637634, Label = 0.0
+Patient = ('EMC0487',), Post_prob = 0.5117902159690857, Label = 0.0
+Patient = ('UMCG0078',), Post_prob = 0.5111605525016785, Label = 0.0
+Patient = ('UMCG0138',), Post_prob = 0.511799156665802, Label = 0.0
+Patient = ('EMC0275',), Post_prob = 0.5115958452224731, Label = 0.0
+Patient = ('EMC0268',), Post_prob = 0.5118094682693481, Label = 1.0
+Patient = ('EMC0360',), Post_prob = 0.5110209584236145, Label = 1.0
+Patient = ('EMC1153',), Post_prob = 0.5115547776222229, Label = 1.0
+Patient = ('EMC0059',), Post_prob = 0.5100688338279724, Label = 1.0

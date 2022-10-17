@@ -64,11 +64,11 @@ if __name__ == '__main__':
     sets.input_H = 140 #Y
     sets.input_W = 150 #X
     sets.batch_size= 1
-    sets.resume_path = "./trails/DRF_models/resnet_10_set_1_method2_epoch_69_batch_0.pth.tar"
+    sets.resume_path = "./trails/DRF_models/resnet_10_set_1_method3_a_v3_epoch_175_batch_0.pth.tar"
     sets.im_dir = "./toy_data/DRF_sets/set_1/test"
     sets.label_list = './toy_data/DRF_label_sets/set_1/test.txt'
     sets.set_name = 'set_1'
-    sets.method ='method2'
+    sets.method ='method3_a_v3'
     
     results_test_file = "results/{}_{}_{}_{}_{}.log".format(sets.model, sets.model_depth, sets.phase, sets.set_name, sets.method)
     

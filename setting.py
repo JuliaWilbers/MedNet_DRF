@@ -1,3 +1,4 @@
+
 '''
 Configs for training & testing
 Written by Whalechen
@@ -5,11 +6,12 @@ Written by Whalechen
 
 import argparse
 
+
 def parse_opts():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--data_root',
-        #default='./data',
+        # default='./data',
         default='./toy_data',
         type=str,
         help='Root directory path of data')
@@ -23,6 +25,29 @@ def parse_opts():
         default='./results/set_1.csv',
         type=str,
         help='Path for image list file')
+    parser.add_argument(
+        '--setnr',
+        default='1',
+        type=str,
+        help='Set number')
+    parser.add_argument(
+        '--methodnr',
+        default='3',
+        type=str,
+        help='Method number')
+    parser.add_argument(
+        '--version',
+        default='1',
+        type=str,
+        help='Experiment version')
+    parser.add_argument(
+        '--save_trails',
+        default=False,
+        help='Store trails')
+    parser.add_argument(
+        '--augmentation',
+        default='False',
+        help='Use augmentation')
     parser.add_argument(
         '--label_list',
         default='./toy_data/DRF_label_sets/set_1/test.txt',
@@ -60,19 +85,19 @@ def parse_opts():
         help='Number of total epochs to run')
     parser.add_argument(
         '--input_D',
-        #default=56,
+        # default=56,
         default=210,
         type=int,
         help='Input size of depth')
     parser.add_argument(
         '--input_H',
-        #default=448,
+        # default=448,
         default=140,
         type=int,
         help='Input size of height')
     parser.add_argument(
         '--input_W',
-        #default=448,
+        # default=448,
         default=150,
         type=int,
         help='Input size of width')
@@ -101,7 +126,7 @@ def parse_opts():
     parser.add_argument(
         '--new_layer_names',
         default=['adaptive_avg_pool3d', 'flatten', 'linear', 'relu', 'sigmoid'],
-        #default=['conv_seg'],
+        # default=['conv_seg'],
         type=list,
         help='New layer except for backbone')
     parser.add_argument(
@@ -110,7 +135,7 @@ def parse_opts():
     parser.add_argument(
         '--gpu_id',
         nargs='+',
-        type=int,              
+        type=int,
         help='Gpu id lists')
     parser.add_argument(
         '--model',
@@ -121,12 +146,12 @@ def parse_opts():
         '--set_name',
         default='set_1',
         type=str,
-        help= 'Name of the current set')
+        help='Name of the current set')
     parser.add_argument(
         '--method',
         default='method2',
         type=str,
-        help= 'Method of the current set')
+        help='Method of the current set')
     parser.add_argument(
         '--model_depth',
         default=10,
@@ -144,7 +169,8 @@ def parse_opts():
     parser.add_argument(
         '--pretrained', action='store_true', help='If true, pre-trained weights used')
     args = parser.parse_args()
-    args.save_folder = "./trails/DRF_models/{}_{}_{}_{}".format(args.model, args.model_depth, args.set_name, args.method)
-    #args.results_train_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
-    #args.results_test_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
+    args.save_folder = "./trails/DRF_models/{}_{}_{}_{}".format(args.model, args.model_depth, args.set_name,
+                                                                args.method)
+    # args.results_train_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
+    # args.results_test_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
     return args
