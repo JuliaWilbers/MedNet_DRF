@@ -116,7 +116,7 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
                     if not os.path.exists(model_save_dir):
                         os.makedirs(model_save_dir)
 
-                if batch_id == (sets.n_epochs - 1):
+                if epoch == (sets.n_epochs - 1):
                     model_save_path = '{}_epoch_{}_batch_{}.pth.tar'.format(save_folder, epoch, batch_id)
                     model_save_dir = os.path.dirname(model_save_path)
                     if not os.path.exists(model_save_dir):
