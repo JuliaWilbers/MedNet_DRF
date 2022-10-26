@@ -38,7 +38,7 @@ def test(results_test_file, data_loader, model, sets):
             y_pred = y_pred.squeeze()
             y_true = labels.squeeze()
             
-            test_loss = loss_clas(y_pred, y_true)
+            test_loss = loss_clas(y_pb, y_true)
             test_acc = accuracy_fn(y_true, y_pred, sets.batch_size)
             
             print(f"Test loss: {test_loss:.5f}, Test acc: {test_acc:.2f}%")
@@ -64,11 +64,16 @@ if __name__ == '__main__':
     sets.input_H = 140 #Y
     sets.input_W = 150 #X
     sets.batch_size= 1
-    sets.resume_path = "./trails/DRF_models/resnet_10_set1_method2_a_v3_epoch_99_batch_99.pth.tar"
-    sets.im_dir = "./toy_data/DRF_sets/set_1/test"
-    sets.label_list = './toy_data/DRF_label_sets/set_1/test.txt'
-    sets.set_name = 'set_1'
-    sets.method ='method2_a_v3'
+    
+    # Change
+    sets.im_dir = "./toy_data/DRF_sets/set_{}/test".format(sets.setnr)
+    sets.label_list = './toy_data/DRF_label_sets/set_1/test.txt'.format(sets.setnr)
+    sets.set_name = 'set_{}'.format(sets.setnr)
+    
+    if sets.augmentation == True:
+        sets.method ='method{}_a_v{}'.format(sets.methodnr, sets.version)
+    else:
+        sets.method ='method{}_v{}'.format(sets.methodnr, sets.version)
     
     results_test_file = "results/{}_{}_{}_{}_{}.log".format(sets.model, sets.model_depth, sets.phase, sets.set_name, sets.method)
     

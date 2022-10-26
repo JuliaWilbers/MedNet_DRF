@@ -171,7 +171,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
 if __name__ == '__main__':
     # settting
     sets = parse_opts()
-    sets.n_epochs = 100
+    #sets.n_epochs = 200
     sets.no_cuda = False
     sets.num_workers = 4
     sets.model_depth = 10
@@ -183,14 +183,15 @@ if __name__ == '__main__':
 
     # Check /change
     if sets.augmentation == 'True':
-        sets.label_list = './toy_data/DRF_label_augmented_sets/set_{}/train.txt'.format(sets.setnr)
+        sets.label_list = './toy_data/DRF_label_augmented_sets/set_{}/train_new_augmented.txt'.format(sets.setnr)
+        sets.label_list_val = './toy_data/DRF_label_sets/set_{}/validation.txt'.format(sets.setnr)
         sets.im_dir = './toy_data/DRF_augmented_sets/set_{}/'.format(sets.setnr)
         #sets.val_dir = './toy_data/DRF_augmented_sets/set_{}/validation'.format(sets.setnr)
         sets.method = 'method{}_a_v{}'.format(sets.methodnr, sets.version)
     else:
         sets.label_list = './toy_data/DRF_label_sets/set_{}/train_new.txt'.format(sets.setnr)
         sets.label_list_val = './toy_data/DRF_label_sets/set_{}/validation.txt'.format(sets.setnr)
-        sets.im_dir = './toy_data/DRF_sets/Images/'.format(sets.setnr)
+        sets.im_dir = './toy_data/Images/'
         #sets.val_dir = './toy_data/DRF_sets/set_{}/validation/'.format(sets.setnr)
         sets.method = 'method{}_v{}'.format(sets.methodnr, sets.version)
 
