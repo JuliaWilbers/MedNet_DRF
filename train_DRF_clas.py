@@ -32,7 +32,7 @@ def accuracy_fn(y_true, y_pred):
     return acc
 
 
-def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval, save_folder, sets):
+def train(data_loader, validation_loader, model, optimizer, scheduler, total_epochs, save_interval, save_folder, sets):
     # settings
 
     logging.basicConfig(filename=results_file, mode='a', format='%(asctime)s - %(message)s', level=logging.INFO,
@@ -53,7 +53,6 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
         loss_clas = loss_clas.cuda()
         print("cuda is used")
 
-    model.train()
     train_time_sp = time.time()
 
     for epoch in range(total_epochs):
@@ -66,18 +65,26 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
 
         log.info('lr = {}'.format(get_lr(optimizer)))
         logger.info('Epoch = {}, lr = {}'.format(epoch, get_lr(optimizer)))
-
+        
+        # Parameter init
         correct = 0
         total = 0
         epoch_loss = 0
         batch_loss = 0
-
+        
+        val_loss = 0
+        correct_val = 0
+        batch_loss_val = 0
+        total_val = 0
+        
+        model.train()
+        
+        # Training 
         for batch_id, batch_data in enumerate(data_loader):
 
             # getting data batch
             batch_id_sp = epoch * batches_per_epoch
             volumes, labels = batch_data
-
             if not sets.no_cuda:
                 volumes = volumes.cuda()
                 labels = labels.cuda()
@@ -132,7 +139,29 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
 
         acc_total = 100. * correct / total
         epoch_loss = batch_loss / len(data_loader)
-        logger.info('Epoch, {}, Epoch_Loss, {}, Accuracy, {}'.format(epoch, epoch_loss, acc_total))
+        logger.info('Epoch = {}, Epoch_Loss = {}, Accuracy = {}'.format(epoch, epoch_loss, acc_total))
+        
+        # Validation
+        model.eval() 
+        for batch_id, batch_data in enumerate(validation_loader):
+        # forward
+            volumes, labels = batch_data
+            if not sets.no_cuda:
+                volumes = volumes.cuda()
+                labels = labels.cuda()
+            
+            with torch.no_grad():
+                y_pb = model(volumes)
+                output = torch.round(y_pb)
+            
+                val_loss = loss_clas(y_pb.squeeze(), labels.squeeze())
+                correct_val += torch.eq(labels.squeeze(), output.squeeze()).sum().item()
+                batch_loss_val += loss_value_clas.item() * sets.batch_size
+                total_val += labels.size(0)
+        
+        val_acc = 100. * correct_val / total_val
+        val_loss = batch_loss_val / len(validation_loader)
+        logger.info('Epoch = {}, validation_Loss = {}, Accuracy validation= {}'.format(epoch, val_loss, val_acc))
 
     print('Finished training')
     if sets.ci_test:
@@ -150,17 +179,19 @@ if __name__ == '__main__':
     sets.input_D = 210  # Z
     sets.input_H = 140  # Y
     sets.input_W = 150  # X
-    sets.batch_size = 5
     sets.learning_rate = 0.001
 
     # Check /change
     if sets.augmentation == 'True':
         sets.label_list = './toy_data/DRF_label_augmented_sets/set_{}/train.txt'.format(sets.setnr)
         sets.im_dir = './toy_data/DRF_augmented_sets/set_{}/'.format(sets.setnr)
+        #sets.val_dir = './toy_data/DRF_augmented_sets/set_{}/validation'.format(sets.setnr)
         sets.method = 'method{}_a_v{}'.format(sets.methodnr, sets.version)
     else:
-        sets.label_list = './toy_data/DRF_label_sets/set_{}/train.txt'.format(sets.setnr)
-        sets.im_dir = './toy_data/DRF_sets/set_{}/train/'.format(sets.setnr)
+        sets.label_list = './toy_data/DRF_label_sets/set_{}/train_new.txt'.format(sets.setnr)
+        sets.label_list_val = './toy_data/DRF_label_sets/set_{}/validation.txt'.format(sets.setnr)
+        sets.im_dir = './toy_data/DRF_sets/Images/'.format(sets.setnr)
+        #sets.val_dir = './toy_data/DRF_sets/set_{}/validation/'.format(sets.setnr)
         sets.method = 'method{}_v{}'.format(sets.methodnr, sets.version)
 
     # Check / change method 2
@@ -223,9 +254,14 @@ if __name__ == '__main__':
         sets.pin_memory = True
 
     training_dataset = DRF_data(sets.im_dir, sets.label_list, sets)
+    validation_dataset = DRF_data(sets.im_dir, sets.label_list_val, sets)
+    
     data_loader = DataLoader(training_dataset, batch_size=sets.batch_size, shuffle=False, num_workers=sets.num_workers,
                              pin_memory=sets.pin_memory)
-
+    
+    validation_loader = DataLoader(validation_dataset, batch_size=sets.batch_size, shuffle=False, num_workers=sets.num_workers,
+                             pin_memory=sets.pin_memory)
     # training
-    train(data_loader, model, optimizer, scheduler, total_epochs=sets.n_epochs, save_interval=sets.save_intervals,
+    train(data_loader, validation_loader, model, optimizer, scheduler, total_epochs=sets.n_epochs, save_interval=sets.save_intervals,
           save_folder=sets.save_folder, sets=sets)
+    

@@ -1,0 +1,15 @@
+Learning rate: 0.001, Optimizer: Adam, Scheduler: NoneType
+100 epochs in total, 13 batches per epoch
+Epoch = 0, lr = 0.001
+Epoch = 0, Epoch_Loss = 2.006620948131268, Accuracy = 67.56756756756756
+Epoch = 0, validation_Loss = 2.699903905391693, Accuracy validation= 66.66666666666667
+Epoch = 1, lr = 0.001
+Epoch = 1, Epoch_Loss = 1.9479931822189918, Accuracy = 67.56756756756756
+Epoch = 1, validation_Loss = 2.6468743085861206, Accuracy validation= 66.66666666666667
+Epoch = 2, lr = 0.001
+Epoch = 2, Epoch_Loss = 1.8991252596561725, Accuracy = 64.86486486486487
+Epoch = 2, validation_Loss = 2.589223802089691, Accuracy validation= 66.66666666666667
+Epoch = 3, lr = 0.001
+Epoch = 3, Epoch_Loss = 1.8363566925892463, Accuracy = 72.97297297297297
+Epoch = 3, validation_Loss = 2.5063769817352295, Accuracy validation= 66.66666666666667
+Epoch = 4, lr = 0.001

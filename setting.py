@@ -36,6 +36,14 @@ def parse_opts():
         type=str,
         help='Method number')
     parser.add_argument(
+        '--val_dir',
+        type=str,
+        help ='Directory of validation images')
+    parser.add_argument(
+        '--label_list_val',
+        type=str,
+        help ='File of validation labels')
+    parser.add_argument(
         '--version',
         default='1',
         type=str,
