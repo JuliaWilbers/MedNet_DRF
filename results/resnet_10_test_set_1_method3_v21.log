@@ -6,3 +6,7 @@ Patient = ('EMC0487',), Post_prob = 0.5010983943939209, Label = 0.0
 Patient = ('UMCG0078',), Post_prob = 0.5004225969314575, Label = 0.0
 Patient = ('UMCG0138',), Post_prob = 0.5008863210678101, Label = 0.0
 Patient = ('EMC0275',), Post_prob = 0.5007219314575195, Label = 0.0
+Patient = ('EMC0268',), Post_prob = 0.5008733868598938, Label = 1.0
+Patient = ('EMC0360',), Post_prob = 0.5007005929946899, Label = 1.0
+Patient = ('EMC1153',), Post_prob = 0.5004855990409851, Label = 1.0
+Patient = ('EMC0059',), Post_prob = 0.5000894665718079, Label = 1.0

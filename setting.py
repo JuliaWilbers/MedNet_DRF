@@ -177,8 +177,7 @@ def parse_opts():
     parser.add_argument(
         '--pretrained', action='store_true', help='If true, pre-trained weights used')
     args = parser.parse_args()
-    args.save_folder = "./trails/DRF_models/{}_{}_{}_{}".format(args.model, args.model_depth, args.set_name,
-                                                                args.method)
+    args.save_folder = "./trails/DRF_models/method{}_v{}_set{}".format(args.method, args.version, args.set_name)
     # args.results_train_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
     # args.results_test_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
     return args

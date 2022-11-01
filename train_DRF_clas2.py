@@ -19,9 +19,6 @@ import os
 import torch.backends.cudnn as cudnn
 import csv
 import logging
-logging.getLogger('matplotlib').setLevel(logging.WARNING)
-import matplotlib.pyplot as plt
-import pandas as pd
 
 
 def get_lr(optimzer):
@@ -37,12 +34,13 @@ def accuracy_fn(y_true, y_pred):
 
 def train(data_loader, validation_loader, model, optimizer, scheduler, total_epochs, save_interval, save_folder, sets):
     # settings
-    logger = logging.getLogger('mylogger')
-    logging.basicConfig(filename=results_file, mode='a', format='%(asctime)s - %(message)s', level=logging.INFO, force=True)
+
+    logging.basicConfig(filename=results_file, mode='a', format='%(asctime)s - %(message)s', level=logging.INFO,
+                        force=True)
 
     batches_per_epoch = len(data_loader)
     # print("batches per epoch is" + str(batches_per_epoch))
-    #log.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
+    # log.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
     logger.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
     loss_clas = nn.BCELoss()
 
@@ -56,17 +54,14 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
         print("cuda is used")
 
     train_time_sp = time.time()
-    epoch_l = []
-    val_l = []
-    train_l = []
-    
+
     for epoch in range(total_epochs):
         log.info('Start epoch {}'.format(epoch))
 
         optimizer.step()
-        #scheduler.step()
-        #log.info('lr = {}'.format(scheduler.get_lr()))
-        #logger.info('Epoch = {}, lr = {}'.format(epoch, scheduler.get_lr()))
+        # scheduler.step()
+        # log.info('lr = {}'.format(scheduler.get_lr()))
+        # logger.info('Epoch = {}, lr = {}'.format(epoch, scheduler.get_lr()))
 
         log.info('lr = {}'.format(get_lr(optimizer)))
         logger.info('Epoch = {}, lr = {}'.format(epoch, get_lr(optimizer)))
@@ -76,13 +71,14 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
         total = 0
         epoch_loss = 0
         batch_loss = 0
+        
         val_loss = 0
         correct_val = 0
         batch_loss_val = 0
         total_val = 0
+        
         model.train()
         
-        epoch_l.append(epoch)
         # Training 
         for batch_id, batch_data in enumerate(data_loader):
 
@@ -111,13 +107,13 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
             loss = loss_value_clas
             loss.backward()
             optimizer.step()
-            #scheduler.step()
+            # scheduler.step()
 
             avg_batch_time = (time.time() - train_time_sp) / (1 + batch_id_sp)
             log.info(
                 'Batch: {}-{} ({}), loss = {:.3f},  avg_batch_time = {:.3f}' \
                     .format(epoch, batch_id, batch_id_sp, loss.item(), avg_batch_time))
-            """
+
             if not sets.ci_test:
                 # save model
                 if batch_id == 0 and sets.save_trails == True and batch_id_sp != 0 and batch_id_sp % save_interval == 0:
@@ -140,11 +136,9 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
                         'state_dict': model.state_dict(),
                         'optimizer': optimizer.state_dict()},
                         model_save_path)
-            """
 
         acc_total = 100. * correct / total
         epoch_loss = batch_loss / len(data_loader)
-        train_l.append(epoch_loss)
         logger.info('Epoch = {}, Epoch_Loss = {}, Accuracy = {}'.format(epoch, epoch_loss, acc_total))
         
         # Validation
@@ -162,46 +156,14 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
             
                 val_loss = loss_clas(y_pb.squeeze(), labels.squeeze())
                 correct_val += torch.eq(labels.squeeze(), output.squeeze()).sum().item()
-                batch_loss_val += val_loss.item() * sets.batch_size
+                batch_loss_val += loss_value_clas.item() * sets.batch_size
                 total_val += labels.size(0)
         
         val_acc = 100. * correct_val / total_val
         val_loss = batch_loss_val / len(validation_loader)
-        val_l.append(val_loss)
         logger.info('Epoch = {}, validation_Loss = {}, Accuracy validation= {}'.format(epoch, val_loss, val_acc))
-            
-        # Save best model    
-        if epoch == 0:
-            best_val_loss  = val_loss
-            
-        if val_loss < best_val_loss:
-          best_val_loss = val_loss
-          model_save_path = '{}_best.pth.tar'.format(save_folder)
-          log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
-          torch.save({
-            'epoch': epoch,
-            'state_dict': model.state_dict(),
-            'optimizer': optimizer.state_dict()}, 
-            model_save_path)
 
     print('Finished training')
-    
-    # Store results
-    print("stored lists")
-    print(epoch_l)
-    print(train_l)
-    print(val_l)
-    df = pd.DataFrame(list(zip(*[epoch_l, train_l, val_l])), columns = ['Epoch', 'training_loss', 'validation_loss'])
-    df.to_csv('test.csv', index=False)
-    
-    # Plot learning curve
-    plt.plot(np.array(epoch_l), np.array(train_l))
-    plt.plot(np.array(epoch_l), np.array(val_l))
-    plt.xlabel("Epoch")
-    plt.ylabel("Loss")
-    plt.title("Learning Curve Experiment {}".format(sets.method))
-    plt.savefig('./results/{}_lc.png'.format(sets.method))
-    
     if sets.ci_test:
         exit()
 
@@ -209,18 +171,19 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
 if __name__ == '__main__':
     # settting
     sets = parse_opts()
+    sets.n_epochs = 100
     sets.no_cuda = False
+    sets.num_workers = 4
     sets.model_depth = 10
     sets.resnet_shortcut = 'A'
     sets.input_D = 210  # Z
     sets.input_H = 140  # Y
     sets.input_W = 150  # X
-    sets.learning_rate = 0.00001
+    sets.learning_rate = 0.001
 
     # Check /change
     if sets.augmentation == 'True':
-        sets.label_list = './toy_data/DRF_label_augmented_sets/set_{}/train_new_augmented.txt'.format(sets.setnr)
-        sets.label_list_val = './toy_data/DRF_label_sets/set_{}/validation.txt'.format(sets.setnr)
+        sets.label_list = './toy_data/DRF_label_augmented_sets/set_{}/train.txt'.format(sets.setnr)
         sets.im_dir = './toy_data/DRF_augmented_sets/set_{}/'.format(sets.setnr)
         #sets.val_dir = './toy_data/DRF_augmented_sets/set_{}/validation'.format(sets.setnr)
         sets.method = 'method{}_a_v{}'.format(sets.methodnr, sets.version)
@@ -229,7 +192,6 @@ if __name__ == '__main__':
         sets.label_list_val = './toy_data/DRF_label_sets/set_{}/validation.txt'.format(sets.setnr)
         sets.im_dir = './toy_data/Images/'
         #sets.val_dir = './toy_data/DRF_sets/set_{}/validation/'.format(sets.setnr)
-        #sets.im_dir = './toy_data/DRF_sets/set_{}/train/'.format(sets.setnr)
         sets.method = 'method{}_v{}'.format(sets.methodnr, sets.version)
 
     # Check / change method 2
@@ -240,8 +202,10 @@ if __name__ == '__main__':
         sets.pretrained = True
 
     # Set save and results files
-    results_file = "results/{}_{}_set{}.csv".format(sets.method, sets.phase, sets.setnr)
-    #sets.save_folder = "./trails/DRF_models/{}_{}_set{}_{}".format(sets.model, sets.model_depth, sets.setnr, sets.method)
+    results_file = "results/{}_{}_{}_set{}_{}.log".format(sets.model, sets.model_depth, sets.phase, sets.setnr,
+                                                       sets.method)
+    sets.save_folder = "./trails/DRF_models/{}_{}_set{}_{}".format(sets.model, sets.model_depth, sets.setnr,
+                                                                sets.method)
 
     # Set logging files
     logger = logging.getLogger('mylogger')
@@ -263,9 +227,9 @@ if __name__ == '__main__':
     else:
         params = [{'params': parameters, 'lr': sets.learning_rate}]
 
-    #optimizer = torch.optim.SGD(params, momentum=0.9, weight_decay=1e-3)
+    # optimizer = torch.optim.SGD(params, momentum=0.9, weight_decay=1e-3)
     optimizer = torch.optim.Adam(params, sets.learning_rate)
-    #scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.99)
+    # scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.99)
     # scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=30, gamma = 1)
     scheduler = None
     logger.info(

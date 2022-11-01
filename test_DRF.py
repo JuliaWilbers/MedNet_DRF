@@ -66,8 +66,8 @@ if __name__ == '__main__':
     sets.batch_size= 1
     
     # Change
-    sets.im_dir = "./toy_data/DRF_sets/set_{}/test".format(sets.setnr)
-    sets.label_list = './toy_data/DRF_label_sets/set_1/test.txt'.format(sets.setnr)
+    sets.im_dir = "./toy_data/Images/"
+    sets.label_list = './toy_data/DRF_label_sets/set_{}/test.txt'.format(sets.setnr)
     sets.set_name = 'set_{}'.format(sets.setnr)
     
     if sets.augmentation == True:

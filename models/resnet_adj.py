@@ -150,6 +150,7 @@ class ResNet(nn.Module):
         self.ReLU = nn.ReLU()
         self.softmax = nn.Softmax()
         self.sigmoid = nn.Sigmoid()
+        self.dropout = nn.Dropout(p=0.5)
         #self.flatten = torch.flatten() 
    
         for m in self.modules():
@@ -196,6 +197,7 @@ class ResNet(nn.Module):
         x = self.layer4(x)
         x = self.adaptive_avg_pool3d(x)
         x = torch.flatten(x, start_dim=1)
+        x = self.dropout(x)
         x = self.linear(x)
         #x = self.relu(x)
         x = self.sigmoid(x)

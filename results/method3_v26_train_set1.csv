@@ -1,0 +1,92 @@
+Learning rate: 1e-05, Optimizer: Adam, Scheduler: NoneType
+30 epochs in total, 8 batches per epoch
+Epoch = 0, lr = 1e-05
+Epoch = 0, Epoch_Loss = 3.4726474061608315, Accuracy = 56.75675675675676
+Epoch = 0, validation_Loss = 3.508787155151367, Accuracy validation= 33.333333333333336
+Epoch = 1, lr = 1e-05
+Epoch = 1, Epoch_Loss = 3.4178030490875244, Accuracy = 56.75675675675676
+Epoch = 1, validation_Loss = 3.695086737473806, Accuracy validation= 33.333333333333336
+Epoch = 2, lr = 1e-05
+Epoch = 2, Epoch_Loss = 3.4659490548074245, Accuracy = 59.45945945945946
+Epoch = 2, validation_Loss = 4.09249484539032, Accuracy validation= 33.333333333333336
+Epoch = 3, lr = 1e-05
+Epoch = 3, Epoch_Loss = 3.128496278077364, Accuracy = 64.86486486486487
+Epoch = 3, validation_Loss = 4.497464100519816, Accuracy validation= 33.333333333333336
+Epoch = 4, lr = 1e-05
+Epoch = 4, Epoch_Loss = 3.1323654390871525, Accuracy = 70.27027027027027
+Epoch = 4, validation_Loss = 4.854136233528455, Accuracy validation= 33.333333333333336
+Epoch = 5, lr = 1e-05
+Epoch = 5, Epoch_Loss = 3.101596962660551, Accuracy = 64.86486486486487
+Epoch = 5, validation_Loss = 5.096488073468208, Accuracy validation= 33.333333333333336
+Epoch = 6, lr = 1e-05
+Epoch = 6, Epoch_Loss = 3.026752322912216, Accuracy = 67.56756756756756
+Epoch = 6, validation_Loss = 5.294099301099777, Accuracy validation= 33.333333333333336
+Epoch = 7, lr = 1e-05
+Epoch = 7, Epoch_Loss = 2.7619441226124763, Accuracy = 75.67567567567568
+Epoch = 7, validation_Loss = 5.366171722610791, Accuracy validation= 33.333333333333336
+Epoch = 8, lr = 1e-05
+Epoch = 8, Epoch_Loss = 2.982179895043373, Accuracy = 62.16216216216216
+Epoch = 8, validation_Loss = 4.667081832885742, Accuracy validation= 33.333333333333336
+Epoch = 9, lr = 1e-05
+Epoch = 9, Epoch_Loss = 3.1699698977172375, Accuracy = 62.16216216216216
+Epoch = 9, validation_Loss = 3.9438991248607635, Accuracy validation= 25.0
+Epoch = 10, lr = 1e-05
+Epoch = 10, Epoch_Loss = 2.8322329744696617, Accuracy = 70.27027027027027
+Epoch = 10, validation_Loss = 3.6776533722877502, Accuracy validation= 33.333333333333336
+Epoch = 11, lr = 1e-05
+Epoch = 11, Epoch_Loss = 3.0273937061429024, Accuracy = 67.56756756756756
+Epoch = 11, validation_Loss = 3.5575362046559653, Accuracy validation= 50.0
+Epoch = 12, lr = 1e-05
+Epoch = 12, Epoch_Loss = 3.0029920674860477, Accuracy = 75.67567567567568
+Epoch = 12, validation_Loss = 3.5481368005275726, Accuracy validation= 66.66666666666667
+Epoch = 13, lr = 1e-05
+Epoch = 13, Epoch_Loss = 2.893776874989271, Accuracy = 72.97297297297297
+Epoch = 13, validation_Loss = 3.6619046330451965, Accuracy validation= 75.0
+Epoch = 14, lr = 1e-05
+Epoch = 14, Epoch_Loss = 2.4574817158281803, Accuracy = 81.08108108108108
+Epoch = 14, validation_Loss = 3.5724793871243796, Accuracy validation= 66.66666666666667
+Epoch = 15, lr = 1e-05
+Epoch = 15, Epoch_Loss = 2.53388250246644, Accuracy = 75.67567567567568
+Epoch = 15, validation_Loss = 3.3106509347756705, Accuracy validation= 75.0
+Epoch = 16, lr = 1e-05
+Epoch = 16, Epoch_Loss = 2.3073108308017254, Accuracy = 83.78378378378379
+Epoch = 16, validation_Loss = 3.09596781929334, Accuracy validation= 75.0
+Epoch = 17, lr = 1e-05
+Epoch = 17, Epoch_Loss = 2.406645081937313, Accuracy = 89.1891891891892
+Epoch = 17, validation_Loss = 3.0014558136463165, Accuracy validation= 75.0
+Epoch = 18, lr = 1e-05
+Epoch = 18, Epoch_Loss = 2.425813339650631, Accuracy = 78.37837837837837
+Epoch = 18, validation_Loss = 3.2779157161712646, Accuracy validation= 75.0
+Epoch = 19, lr = 1e-05
+Epoch = 19, Epoch_Loss = 2.3650831822305918, Accuracy = 83.78378378378379
+Epoch = 19, validation_Loss = 3.428680251042048, Accuracy validation= 75.0
+Epoch = 20, lr = 1e-05
+Epoch = 20, Epoch_Loss = 2.2804633155465126, Accuracy = 86.48648648648648
+Epoch = 20, validation_Loss = 3.5395068923632302, Accuracy validation= 50.0
+Epoch = 21, lr = 1e-05
+Epoch = 21, Epoch_Loss = 2.043350310996175, Accuracy = 83.78378378378379
+Epoch = 21, validation_Loss = 3.8839684426784515, Accuracy validation= 50.0
+Epoch = 22, lr = 1e-05
+Epoch = 22, Epoch_Loss = 2.0844075456261635, Accuracy = 86.48648648648648
+Epoch = 22, validation_Loss = 3.3075704673926034, Accuracy validation= 41.666666666666664
+Epoch = 23, lr = 1e-05
+Epoch = 23, Epoch_Loss = 1.8896197341382504, Accuracy = 81.08108108108108
+Epoch = 23, validation_Loss = 3.830683926741282, Accuracy validation= 41.666666666666664
+Epoch = 24, lr = 1e-05
+Epoch = 24, Epoch_Loss = 1.8478332366794348, Accuracy = 89.1891891891892
+Epoch = 24, validation_Loss = 4.380824814240138, Accuracy validation= 50.0
+Epoch = 25, lr = 1e-05
+Epoch = 25, Epoch_Loss = 1.5674245962873101, Accuracy = 89.1891891891892
+Epoch = 25, validation_Loss = 3.7720049917697906, Accuracy validation= 58.333333333333336
+Epoch = 26, lr = 1e-05
+Epoch = 26, Epoch_Loss = 1.7970667546615005, Accuracy = 83.78378378378379
+Epoch = 26, validation_Loss = 5.96631536881129, Accuracy validation= 41.666666666666664
+Epoch = 27, lr = 1e-05
+Epoch = 27, Epoch_Loss = 1.4812040328979492, Accuracy = 91.89189189189189
+Epoch = 27, validation_Loss = 6.232112584014733, Accuracy validation= 50.0
+Epoch = 28, lr = 1e-05
+Epoch = 28, Epoch_Loss = 1.6828300571069121, Accuracy = 91.89189189189189
+Epoch = 28, validation_Loss = 5.340915769338608, Accuracy validation= 58.333333333333336
+Epoch = 29, lr = 1e-05
+Epoch = 29, Epoch_Loss = 1.3615240901708603, Accuracy = 91.89189189189189
+Epoch = 29, validation_Loss = 4.7046106060345965, Accuracy validation= 58.333333333333336
