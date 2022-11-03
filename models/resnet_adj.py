@@ -150,7 +150,7 @@ class ResNet(nn.Module):
         self.ReLU = nn.ReLU()
         self.softmax = nn.Softmax()
         self.sigmoid = nn.Sigmoid()
-        self.dropout = nn.Dropout(p=0.5)
+        self.dropout = nn.Dropout(p=0.2)
         #self.flatten = torch.flatten() 
    
         for m in self.modules():
