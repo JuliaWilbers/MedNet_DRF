@@ -10,21 +10,29 @@ import argparse
 def parse_opts():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '--data_root',
-        # default='./data',
-        default='./toy_data',
+        '--data_dir',
+        default='./data',
         type=str,
         help='Root directory path of data')
     parser.add_argument(
-        '--img_list',
-        default='./data/train.txt',
+        '--label_list',
+        default='./toy_data/DRF_label_sets/set_1/test.txt',
+        type=str,
+        help='Path for label list file')
+    parser.add_argument(
+        '--label_list_val',
+        type=str,
+        help ='Path for label list file validation set')
+    parser.add_argument(
+        '--results_file',
+        default='./results/experiment.csv',
         type=str,
         help='Path for image list file')
     parser.add_argument(
-        '--results_file',
-        default='./results/set_1.csv',
+        '--method',
+        default='method2',
         type=str,
-        help='Path for image list file')
+        help='Method of the current set')
     parser.add_argument(
         '--setnr',
         default='1',
@@ -36,31 +44,23 @@ def parse_opts():
         type=str,
         help='Method number')
     parser.add_argument(
-        '--val_dir',
-        type=str,
-        help ='Directory of validation images')
-    parser.add_argument(
-        '--label_list_val',
-        type=str,
-        help ='File of validation labels')
-    parser.add_argument(
         '--version',
         default='1',
         type=str,
         help='Experiment version')
     parser.add_argument(
-        '--save_trails',
-        default=False,
-        help='Store trails')
-    parser.add_argument(
         '--augmentation',
         default='False',
         help='Use augmentation')
     parser.add_argument(
-        '--label_list',
-        default='./toy_data/DRF_label_sets/set_1/test.txt',
-        type=str,
-        help='Path for label list file')
+        '--save_trails',
+        default=False,
+        help='Store trails')
+    parser.add_argument(
+        '--save_intervals',
+        default=50,
+        type=int,
+        help='Interation for saving model')
     parser.add_argument(
         '--n_seg_classes',
         default=2,
@@ -81,11 +81,6 @@ def parse_opts():
         '--batch_size', default=2, type=int, help='Batch Size')
     parser.add_argument(
         '--phase', default='train', type=str, help='Phase of train or test')
-    parser.add_argument(
-        '--save_intervals',
-        default=50,
-        type=int,
-        help='Interation for saving model')
     parser.add_argument(
         '--n_epochs',
         default=200,
@@ -116,16 +111,6 @@ def parse_opts():
         help=
         'Path for resume model.')
     parser.add_argument(
-        '--im_dir',
-        default='./toy_data/DRF_sets/set_1/test/',
-        type=str,
-        help='Image Directory')
-    parser.add_argument(
-        '--seg_dir',
-        default='./toy_data/Segmentations',
-        type=str,
-        help='Segmentaion Directory')
-    parser.add_argument(
         '--pretrain_path',
         default=None,
         type=str,
@@ -133,8 +118,8 @@ def parse_opts():
         'Path for pretrained model.')
     parser.add_argument(
         '--new_layer_names',
-        default=['adaptive_avg_pool3d', 'flatten', 'linear', 'relu', 'sigmoid'],
-        # default=['conv_seg'],
+        #default=['maxpool2', 'flatten', 'linear', 'relu', 'sigmoid'],
+        default=['classification1', 'classification2'],
         type=list,
         help='New layer except for backbone')
     parser.add_argument(
@@ -150,16 +135,6 @@ def parse_opts():
         default='resnet',
         type=str,
         help='(resnet | preresnet | wideresnet | resnext | densenet | ')
-    parser.add_argument(
-        '--set_name',
-        default='set_1',
-        type=str,
-        help='Name of the current set')
-    parser.add_argument(
-        '--method',
-        default='method2',
-        type=str,
-        help='Method of the current set')
     parser.add_argument(
         '--model_depth',
         default=10,
@@ -177,7 +152,5 @@ def parse_opts():
     parser.add_argument(
         '--pretrained', action='store_true', help='If true, pre-trained weights used')
     args = parser.parse_args()
-    args.save_folder = "./trails/DRF_models/method{}_v{}_set{}".format(args.method, args.version, args.set_name)
-    # args.results_train_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
-    # args.results_test_file = "results/{}_{}_{}_{}.log".format(args.model, args.model_depth, args.phase, args.set_name)
+    args.save_folder = "./trails/DRF_models/method{}_v{}_set{}".format(args.method, args.version, args.setnr)
     return args

@@ -142,17 +142,19 @@ class ResNet(nn.Module):
             block, 512, layers[3], shortcut_type, stride=1, dilation=4)
         
         #New added for classification
-        outsize = 512
-      
-        self.adaptive_avg_pool3d = nn.AdaptiveAvgPool3d(1)
-        #self.flatten = torch.flatten()
-        self.linear = nn.Linear(outsize,1)
-        self.ReLU = nn.ReLU()
-        self.softmax = nn.Softmax()
-        self.sigmoid = nn.Sigmoid()
-        self.dropout = nn.Dropout(p=0.2)
-        #self.flatten = torch.flatten() 
-   
+        #outsize = 165888
+        outsize = 6144
+        self.classification1 = nn.Sequential(
+                                                nn.MaxPool3d(7)
+                                                )
+                                                
+        self.classification2 = nn.Sequential(
+                                                nn.Dropout(p=0.2),
+                                                nn.Linear(outsize,1),
+                                                nn.ReLU(),
+                                                nn.Sigmoid()
+                                                )
+        
         for m in self.modules():
             if isinstance(m, nn.Conv3d):
                 m.weight = nn.init.kaiming_normal(m.weight, mode='fan_out')
@@ -186,7 +188,7 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def forward(self, x):
+    def forward(self, x,y):
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
@@ -195,12 +197,18 @@ class ResNet(nn.Module):
         x = self.layer2(x)
         x = self.layer3(x)
         x = self.layer4(x)
-        x = self.adaptive_avg_pool3d(x)
+        y = F.interpolate(y,[27,18,19]) #with nearest neighbohr = default
+        x = torch.mul(x,y)
+        x = self.classification1(x)
         x = torch.flatten(x, start_dim=1)
-        x = self.dropout(x)
-        x = self.linear(x)
+        x = self.classification2(x)
+        #x = self.adaptive_avg_pool3d(x)
+        #x = self.maxpool2(x)
+        #x = torch.flatten(x, start_dim=1)
+        #x = self.dropout(x)
+        #x = self.linear(x)
         #x = self.relu(x)
-        x = self.sigmoid(x)
+        #x = self.sigmoid(x)
        
         return x
 

@@ -1,10 +1,8 @@
-'''
-Dataset for training'''
+'''Dataset for training'''
 
 import math
 import os
 import random
-
 import numpy as np
 from torch.utils.data import Dataset
 import nibabel
@@ -14,29 +12,17 @@ import cv2
 
 class DRF_data(Dataset):
 
-    def __init__(self, im_dir, label_list, sets):
+    def __init__(self, data_dir, label_list, sets):
         with open(label_list, 'r') as f:
             self.label_list = [line.strip() for line in f]
         print("Processing {} datas".format(len(self.label_list)))
         
-        print(im_dir)
-        print(label_list)
         self.input_D = sets.input_D
         self.input_H = sets.input_H
         self.input_W = sets.input_W
         self.phase = sets.phase
         self.set_size = len(self.label_list)
-        self.im_dir = im_dir
-        
-        """
-        # for testing
-        idx = 1
-        ith_info = self.label_list[idx].split(" ")
-        self.name = ith_info[0] + "nii.gz"
-        self.img_name = os.path.normpath(os.path.join(self.im_dir, self.name))
-        self.label_name = os.path.normpath(os.path.join(self.seg_dir, self.name))
-        print(self.img_name)
-        """
+        self.data_dir = data_dir
 
     def __nii2tensorarray__(self, data):
         [z, y, x] = data.shape
@@ -51,49 +37,45 @@ class DRF_data(Dataset):
     
     
     def __getitem__(self, idx):
-
+    
+        # Read image and segmentation
+        ith_info = self.label_list[idx].split(" ")
+        self.name = ith_info[0] 
+        self.img_name = os.path.normpath(os.path.join(self.data_dir, self.name, "image.nii.gz"))
+        self.seg_name = os.path.normpath(os.path.join(self.data_dir, self.name, "mask.nii.gz"))
+            
+        # Read labels 
+        label = torch.tensor([float(ith_info[1])])
+        assert os.path.isfile(self.img_name)
+            
+        img = nibabel.load(self.img_name)  
+        mask = nibabel.load(self.seg_name)
+        assert img is not None
+        assert mask is not None
+        
         if self.phase == "train":
-            # Read image
-            ith_info = self.label_list[idx].split(" ")
-            self.name = ith_info[0] + ".nii.gz"
-            self.img_name = os.path.normpath(os.path.join(self.im_dir, self.name))
             
-            # Read labels 
-            label = torch.tensor([float(ith_info[1])])
-            assert os.path.isfile(self.img_name)
-            
-            img = nibabel.load(self.img_name)  # We have transposed the data from WHD format to DHW
-            assert img is not None
-          
             # data processing
             img_array = self.__training_data_process__(img)
-
+            mask_array = self.__training_data_process__(mask)
+                
             # 2 tensor array
             img_array = self.__nii2tensorarray__(img_array)
+            mask_array = self.__nii2tensorarray__(mask_array)
             
-            return img_array, label
-
+            return img_array, mask_array, label
+            
         elif self.phase == "test":
-            # Read image
-            ith_info = self.label_list[idx].split(" ")
-            p_name = ith_info[0]
-            self.name = ith_info[0] + ".nii.gz"
-            self.img_name = os.path.normpath(os.path.join(self.im_dir, self.name))
-            
-            # Read label
-            label = torch.tensor([float(ith_info[1])])
-            assert os.path.isfile(self.img_name)
-            
-            img = nibabel.load(self.img_name)  # We have transposed the data from WHD format to DHW
-            assert img is not None
 
             # data processing
             img_array = self.__testing_data_process__(img)
-
+            mask_array = self.__testing_data_process__(mask)
+            
             # 2 tensor array
             img_array = self.__nii2tensorarray__(img_array)
+            mask_array = self.__nii2tensorarray__(mask_array)
 
-            return img_array, label, p_name
+            return img_array, masks, label, self.name
 
     def __itensity_normalize_one_volume__(self, volume):
         """
@@ -123,11 +105,6 @@ class DRF_data(Dataset):
         _min = pixels.min()
         
         out = (pixels - _min)/(_max-_min)
-        
-        #out_random = np.random.normal(0, 1, size=volume.shape)
-        #out[volume == 0] = out_random[volume == 0]
-        
-        #out = cv2.normalize(volume, None, alpha = 0, beta = 1, norm_type = cv2.NORM_MINMAX)
         
         return out
 

@@ -2,6 +2,8 @@ import torch
 from torch import nn
 from models import resnet_adj
 
+def count_parameters(parameters):
+    return sum(p.numel() for p in parameters if p.requires_grad)
 
 def generate_model(opt):
     assert opt.model in [
@@ -95,13 +97,14 @@ def generate_model(opt):
 
         new_parameters = [] 
         for pname, p in model.named_parameters():
-            for layer_name in opt.new_layer_names:
-                if pname.find(layer_name) >= 0:
-                    new_parameters.append(p)
-                    break
-        print('new_parameters' + str(new_parameters))
+          for layer_name in opt.new_layer_names:
+            if pname.find(layer_name) >= 0:
+              new_parameters.append(p)
+              break
+        print('new_parameters' + str(count_parameters(new_parameters)))
         new_parameters_id = list(map(id, new_parameters))
         base_parameters = list(filter(lambda p: id(p) not in new_parameters_id, model.parameters()))
+        print('baseparameters' + str(count_parameters(base_parameters)))
         parameters = {'base_parameters': base_parameters, 
                       'new_parameters': new_parameters}
 
