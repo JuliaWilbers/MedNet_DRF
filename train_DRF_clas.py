@@ -53,7 +53,6 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
         log.info('Start epoch {}'.format(epoch))
         
         optimizer.step()
-        #scheduler.step()
         #log.info('lr = {}'.format(scheduler.get_lr()))
 
         log.info('lr = {}'.format(get_lr(optimizer)))
@@ -62,48 +61,8 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
         correct, total, tloss, running_loss, vloss, vcorrect, running_vloss, vtotal = (0 for i in range(8))
         epoch_l.append(epoch)
         
-        
-        # Validation
-        model.eval()
-        with torch.no_grad():  
-          for batch_id, batch_data in enumerate(validation_loader):
-              # get validation data
-              volumes, masks, labels = batch_data
-              if not sets.no_cuda:
-                  volumes = volumes.cuda()
-                  labels = labels.cuda()
-                  masks = masks.cuda()
-              # forward    
-              y_pb = model(volumes, masks)
-              output = torch.round(y_pb)
-              
-              vloss = loss_clas(y_pb.squeeze(), labels.squeeze())
-              vcorrect += torch.eq(labels.squeeze(), output.squeeze()).sum().item()
-              running_vloss += vloss.item() 
-              vtotal += labels.size(0)
-              
-          # Calculate and log validation loss and accuracy
-          vacc = 100. * vcorrect / vtotal
-          vloss = running_vloss / len(validation_loader)
-          val_l.append(vloss)
-          log.info('Epoch = {}, validation_Loss = {}, Accuracy validation= {}'.format(epoch, vloss, vacc))
-            
-        # Save best model (model with lowest validation loss)   
-        if epoch == 0:
-            best_val_loss  = vloss
-            
-        if vloss < best_val_loss:
-          best_val_loss = vloss
-          model_save_path = '{}_best.pth.tar'.format(save_folder)
-          log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
-          torch.save({
-            'epoch': epoch,
-            'state_dict': model.state_dict(),
-            'optimizer': optimizer.state_dict()}, 
-            model_save_path)
-        
-        model.train()
         # Training 
+        model.train()
         for batch_id, batch_data in enumerate(data_loader):
 
             # getting data batch
@@ -160,6 +119,47 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
         tloss = running_loss / len(data_loader)
         train_l.append(tloss)
         log.info('Epoch = {}, Epoch_Loss = {}, Accuracy = {}'.format(epoch, tloss, epoch_acc))
+        
+        # Validation
+        model.eval()
+        with torch.no_grad():  
+          for batch_id, batch_data in enumerate(validation_loader):
+              # get validation data
+              volumes, masks, labels = batch_data
+              if not sets.no_cuda:
+                  volumes = volumes.cuda()
+                  labels = labels.cuda()
+                  masks = masks.cuda()
+              # forward    
+              y_pb = model(volumes, masks)
+              output = torch.round(y_pb)
+              
+              vloss = loss_clas(y_pb.squeeze(), labels.squeeze())
+              vcorrect += torch.eq(labels.squeeze(), output.squeeze()).sum().item()
+              running_vloss += vloss.item() 
+              vtotal += labels.size(0)
+              
+          # Calculate and log validation loss and accuracy
+          vacc = 100. * vcorrect / vtotal
+          vloss = running_vloss / len(validation_loader)
+          val_l.append(vloss)
+          log.info('Epoch = {}, validation_Loss = {}, Accuracy validation= {}'.format(epoch, vloss, vacc))
+          
+          scheduler.step(vloss)
+            
+        # Save best model (model with lowest validation loss)   
+        if epoch == 0:
+            best_val_loss  = vloss
+            
+        if vloss < best_val_loss:
+          best_val_loss = vloss
+          model_save_path = '{}_best.pth.tar'.format(save_folder)
+          log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
+          torch.save({
+            'epoch': epoch,
+            'state_dict': model.state_dict(),
+            'optimizer': optimizer.state_dict()}, 
+            model_save_path)
 
     print('Finished training')
     
@@ -230,7 +230,8 @@ if __name__ == '__main__':
     optimizer = torch.optim.Adam(params, sets.learning_rate)
     #scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.99)
     # scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=30, gamma = 1)
-    scheduler = None
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=10, verbose=False, threshold=0.0001, threshold_mode='rel', cooldown=0, min_lr=1e-07, eps=1e-08)
+    #scheduler = None
     log.info(
         'Learning rate: {}, Optimizer: {}, Scheduler: {}'.format(sets.learning_rate, optimizer.__class__.__name__,
                                                                  scheduler.__class__.__name__))

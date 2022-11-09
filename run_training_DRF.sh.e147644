@@ -1,0 +1,11 @@
+/trinity/home/jwilbers/MedNet/MedicalNet/models/resnet_adj.py:160: UserWarning: nn.init.kaiming_normal is now deprecated in favor of nn.init.kaiming_normal_.
+  m.weight = nn.init.kaiming_normal(m.weight, mode='fan_out')
+2022-11-08 09:59:00 INFO     [train_DRF_clas.py:237] Learning rate: 1e-05, Optimizer: Adam, Scheduler: NoneType
+2022-11-08 09:59:00 INFO     [train_DRF_clas.py:51] 100 epochs in total, 102 batches per epoch
+2022-11-08 09:59:00 INFO     [train_DRF_clas.py:53] Start epoch 0
+Traceback (most recent call last):
+  File "train_DRF_clas.py", line 266, in <module>
+    save_folder=sets.save_folder, sets=sets)
+  File "train_DRF_clas.py", line 56, in train
+    scheduler.step()
+AttributeError: 'NoneType' object has no attribute 'step'

@@ -84,8 +84,7 @@ class DRF_data(Dataset):
             volume: the input nd volume
         outputs:
             out: the normalized nd volume
-        """
-        """
+      
         pixels = volume[volume > 0]
         mean = pixels.mean()
         std = pixels.std()
@@ -93,19 +92,18 @@ class DRF_data(Dataset):
         out_random = np.random.normal(0, 1, size=volume.shape)
         out[volume == 0] = out_random[volume == 0]
         """
-        """
         pixels = volume
         mean = pixels.mean()
         std = pixels.std()
         out = (volume - mean) / std
         
-        """
+        """  
         pixels = volume
         _max = pixels.max()
         _min = pixels.min()
         
         out = (pixels - _min)/(_max-_min)
-        
+        """
         return out
 
     def __training_data_process__(self, data):
