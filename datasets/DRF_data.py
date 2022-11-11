@@ -60,7 +60,9 @@ class DRF_data(Dataset):
             mask_array = self.__training_data_process__(mask)
                 
             # 2 tensor array
+            #image
             img_array = self.__nii2tensorarray__(img_array)
+            #mask
             mask_array = self.__nii2tensorarray__(mask_array)
             
             return img_array, mask_array, label
@@ -91,7 +93,7 @@ class DRF_data(Dataset):
         out = (volume - mean) / std
         out_random = np.random.normal(0, 1, size=volume.shape)
         out[volume == 0] = out_random[volume == 0]
-        """
+        
         pixels = volume
         mean = pixels.mean()
         std = pixels.std()
@@ -103,16 +105,16 @@ class DRF_data(Dataset):
         _min = pixels.min()
         
         out = (pixels - _min)/(_max-_min)
-        """
+    
         return out
 
     def __training_data_process__(self, data):
         # crop data according net input size
         data = data.get_data()
-        #print("before normalisation, ", "max: ", data.max(), "min: ", data.min())
+        print("before normalisation, ", "max: ", data.max(), "min: ", data.min())
         # normalization datas
         data = self.__itensity_normalize_one_volume__(data)
-        #print("after normalisation, ", "max: ", data.max(), "min: ", data.min())
+        print("after normalisation, ", "max: ", data.max(), "min: ", data.min())
         return data
 
     def __testing_data_process__(self, data):

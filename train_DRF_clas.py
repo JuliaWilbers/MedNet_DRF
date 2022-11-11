@@ -94,8 +94,8 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
 
             avg_batch_time = (time.time() - train_time_sp) / (1 + batch_id_sp)
             log.info(
-                'Batch: {}-{} ({}), loss = {:.3f},  avg_batch_time = {:.3f}' \
-                    .format(epoch, batch_id, batch_id_sp, loss.item(), avg_batch_time))
+                'Batch: {}-{}, loss = {:.3f}, true: {}, pred: {}, ypb: {}' \
+                    .format(epoch, batch_id, running_loss, labels.tolist(), output.tolist(), raw_output.tolist()))
             
             if not sets.ci_test:
                 # save model every x times
@@ -188,7 +188,7 @@ if __name__ == '__main__':
     sets.input_D = 210  # Z
     sets.input_H = 140  # Y
     sets.input_W = 150  # X
-    sets.learning_rate = 0.00001
+    sets.learning_rate = 0.0001
     sets.data_dir = './data/DRF_data/'
 
     # Check /change
@@ -217,10 +217,12 @@ if __name__ == '__main__':
     params = [{'params': parameters, 'lr': sets.learning_rate}]
 
     # optimizer
+
     if sets.pretrained:
         params = [
             {'params': parameters['base_parameters'], 'lr': sets.learning_rate},
-            {'params': parameters['new_parameters'], 'lr': 0}]
+            {'params': parameters['new_parameters'], 'lr': sets.learning_rate}
+            ]
 
         # {'params': parameters['new_parameters'], 'lr': sets.learning_rate * 100}]
     else:
@@ -256,7 +258,7 @@ if __name__ == '__main__':
     training_dataset = DRF_data(sets.data_dir, sets.label_list, sets)
     validation_dataset = DRF_data(sets.data_dir, sets.label_list_val, sets)
     
-    data_loader = DataLoader(training_dataset, batch_size=sets.batch_size, shuffle=False, num_workers=sets.num_workers,
+    data_loader = DataLoader(training_dataset, batch_size=sets.batch_size, shuffle=True, num_workers=sets.num_workers,
                              pin_memory=sets.pin_memory)
     
     validation_loader = DataLoader(validation_dataset, batch_size=sets.batch_size, shuffle=False, num_workers=sets.num_workers,
