@@ -47,7 +47,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
         loss_clas = loss_clas.cuda()
 
     train_time_sp = time.time()
-    epoch_l, val_l, train_l = ([] for i in range(3))
+    epoch_l, val_l, train_l, tacc_l, lacc_l = ([] for i in range(5))
     log.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
     for epoch in range(total_epochs):
         log.info('Start epoch {}'.format(epoch))
@@ -94,8 +94,8 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
 
             avg_batch_time = (time.time() - train_time_sp) / (1 + batch_id_sp)
             log.info(
-                'Batch: {}-{}, loss = {:.3f}, true: {}, pred: {}, ypb: {}' \
-                    .format(epoch, batch_id, running_loss, labels.tolist(), output.tolist(), raw_output.tolist()))
+                'Batch: {}-{}, loss = {:.3f}' \
+                    .format(epoch, batch_id, running_loss))
             
             if not sets.ci_test:
                 # save model every x times
@@ -118,6 +118,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
         epoch_acc = 100. * correct / total
         tloss = running_loss / len(data_loader)
         train_l.append(tloss)
+        tacc_l.append(epoch_acc)
         log.info('Epoch = {}, Epoch_Loss = {}, Accuracy = {}'.format(epoch, tloss, epoch_acc))
         
         # Validation
@@ -144,7 +145,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
           vloss = running_vloss / len(validation_loader)
           val_l.append(vloss)
           log.info('Epoch = {}, validation_Loss = {}, Accuracy validation= {}'.format(epoch, vloss, vacc))
-          
+          lacc_l.append(vacc)
           scheduler.step(vloss)
             
         # Save best model (model with lowest validation loss)   
@@ -164,7 +165,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
     print('Finished training')
     
     # Store results
-    df = pd.DataFrame(list(zip(*[epoch_l, train_l, val_l])), columns = ['Epoch', 'training_loss', 'validation_loss'])
+    df = pd.DataFrame(list(zip(*[epoch_l, train_l, val_l, tacc_l, lacc_l])), columns = ['Epoch', 'training_loss', 'validation_loss', 'training acc', 'validation acc'])
     df.to_csv(sets.results_file, index=False)
     
     # Store learning curve
@@ -173,7 +174,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
     plt.title("Learning Curve Experiment {}".format(sets.method))
-    plt.savefig('./results/{}_lc.png'.format(sets.method))
+    plt.savefig('./results/{}_set_{}lc.png'.format(sets.method, sets.setnr))
     
     if sets.ci_test:
         exit()
@@ -214,13 +215,13 @@ if __name__ == '__main__':
     # getting mode
     torch.manual_seed(sets.manual_seed)
     model, parameters = generate_model(sets)
-    params = [{'params': parameters, 'lr': sets.learning_rate}]
+    #params = [{'params': parameters, 'lr': sets.learning_rate}]
 
     # optimizer
 
     if sets.pretrained:
         params = [
-            {'params': parameters['base_parameters'], 'lr': sets.learning_rate},
+            {'params': parameters['base_parameters'], 'lr': 0},
             {'params': parameters['new_parameters'], 'lr': sets.learning_rate}
             ]
 
@@ -232,7 +233,7 @@ if __name__ == '__main__':
     optimizer = torch.optim.Adam(params, sets.learning_rate)
     #scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.99)
     # scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=30, gamma = 1)
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=10, verbose=False, threshold=0.0001, threshold_mode='rel', cooldown=0, min_lr=1e-07, eps=1e-08)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=10, verbose=False, threshold=0.0001, threshold_mode='rel', cooldown=0, min_lr=1e-8, eps=1e-08)
     #scheduler = None
     log.info(
         'Learning rate: {}, Optimizer: {}, Scheduler: {}'.format(sets.learning_rate, optimizer.__class__.__name__,

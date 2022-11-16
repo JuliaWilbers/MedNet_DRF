@@ -1,0 +1,242 @@
+/trinity/home/jwilbers/MedNet/MedicalNet/models/resnet_adj.py:160: UserWarning: nn.init.kaiming_normal is now deprecated in favor of nn.init.kaiming_normal_.
+  m.weight = nn.init.kaiming_normal(m.weight, mode='fan_out')
+2022-11-15 21:46:40 INFO     [train_DRF_clas.py:240] Learning rate: 0.0001, Optimizer: Adam, Scheduler: ReduceLROnPlateau
+2022-11-15 21:46:40 INFO     [train_DRF_clas.py:51] 100 epochs in total, 82 batches per epoch
+2022-11-15 21:46:40 INFO     [train_DRF_clas.py:53] Start epoch 0
+2022-11-15 21:46:40 INFO     [train_DRF_clas.py:58] lr = 0
+renset-10 constructed
+loading pretrained model ./pretrain/resnet_10.pth
+new_parameters6145
+baseparameters14181696
+Processing 407 datas
+Processing 12 datas
+Current setting is:
+Namespace(augmentation='True', batch_size=5, ci_test=False, data_dir='./data/DRF_data/', gpu_id=[2], input_D=210, input_H=140, input_W=150, label_list='./data/DRF_label_augmented_sets/set_2/train_new_augmented.txt', label_list_val='./data/DRF_label_sets/set_2/validation.txt', learning_rate=0.0001, manual_seed=1, method='method3_a_v20', methodnr='3', model='resnet', model_depth=10, n_epochs=100, n_seg_classes=2, new_layer_names=['classification1', 'classification2'], no_cuda=False, num_workers=1, phase='train', pin_memory=True, pretrain_path='./pretrain/resnet_10.pth', pretrained=True, resnet_shortcut='A', results_file='results/method3_a_v20_train_set2.csv', resume_path='', save_folder='./trails/DRF_models/methodmethod2_v20_set2', save_intervals=50, save_trails=False, setnr='2', version='20')
+
+
+
+2022-11-15 21:46:42 INFO     [train_DRF_clas.py:98] Batch: 0-0, loss = 3.710
+2022-11-15 21:46:43 INFO     [train_DRF_clas.py:98] Batch: 0-1, loss = 7.538
+2022-11-15 21:46:44 INFO     [train_DRF_clas.py:98] Batch: 0-2, loss = 9.028
+2022-11-15 21:46:46 INFO     [train_DRF_clas.py:98] Batch: 0-3, loss = 10.689
+2022-11-15 21:46:47 INFO     [train_DRF_clas.py:98] Batch: 0-4, loss = 11.211
+2022-11-15 21:46:49 INFO     [train_DRF_clas.py:98] Batch: 0-5, loss = 12.622
+2022-11-15 21:46:50 INFO     [train_DRF_clas.py:98] Batch: 0-6, loss = 14.362
+2022-11-15 21:46:52 INFO     [train_DRF_clas.py:98] Batch: 0-7, loss = 16.396
+2022-11-15 21:46:53 INFO     [train_DRF_clas.py:98] Batch: 0-8, loss = 17.924
+2022-11-15 21:46:54 INFO     [train_DRF_clas.py:98] Batch: 0-9, loss = 20.462
+2022-11-15 21:46:56 INFO     [train_DRF_clas.py:98] Batch: 0-10, loss = 22.882
+2022-11-15 21:46:57 INFO     [train_DRF_clas.py:98] Batch: 0-11, loss = 26.235
+2022-11-15 21:46:59 INFO     [train_DRF_clas.py:98] Batch: 0-12, loss = 28.253
+2022-11-15 21:47:00 INFO     [train_DRF_clas.py:98] Batch: 0-13, loss = 29.042
+2022-11-15 21:47:02 INFO     [train_DRF_clas.py:98] Batch: 0-14, loss = 29.265
+2022-11-15 21:47:03 INFO     [train_DRF_clas.py:98] Batch: 0-15, loss = 29.707
+2022-11-15 21:47:05 INFO     [train_DRF_clas.py:98] Batch: 0-16, loss = 30.706
+2022-11-15 21:47:06 INFO     [train_DRF_clas.py:98] Batch: 0-17, loss = 31.380
+2022-11-15 21:47:08 INFO     [train_DRF_clas.py:98] Batch: 0-18, loss = 32.288
+2022-11-15 21:47:09 INFO     [train_DRF_clas.py:98] Batch: 0-19, loss = 33.191
+2022-11-15 21:47:11 INFO     [train_DRF_clas.py:98] Batch: 0-20, loss = 33.927
+2022-11-15 21:47:12 INFO     [train_DRF_clas.py:98] Batch: 0-21, loss = 35.324
+2022-11-15 21:47:14 INFO     [train_DRF_clas.py:98] Batch: 0-22, loss = 36.089
+2022-11-15 21:47:15 INFO     [train_DRF_clas.py:98] Batch: 0-23, loss = 37.216
+2022-11-15 21:47:16 INFO     [train_DRF_clas.py:98] Batch: 0-24, loss = 37.835
+2022-11-15 21:47:18 INFO     [train_DRF_clas.py:98] Batch: 0-25, loss = 38.549
+2022-11-15 21:47:20 INFO     [train_DRF_clas.py:98] Batch: 0-26, loss = 39.796
+2022-11-15 21:47:21 INFO     [train_DRF_clas.py:98] Batch: 0-27, loss = 40.447
+2022-11-15 21:47:23 INFO     [train_DRF_clas.py:98] Batch: 0-28, loss = 40.694
+2022-11-15 21:47:24 INFO     [train_DRF_clas.py:98] Batch: 0-29, loss = 41.709
+2022-11-15 21:47:25 INFO     [train_DRF_clas.py:98] Batch: 0-30, loss = 42.605
+2022-11-15 21:47:27 INFO     [train_DRF_clas.py:98] Batch: 0-31, loss = 44.070
+2022-11-15 21:47:28 INFO     [train_DRF_clas.py:98] Batch: 0-32, loss = 44.741
+2022-11-15 21:47:30 INFO     [train_DRF_clas.py:98] Batch: 0-33, loss = 45.787
+2022-11-15 21:47:31 INFO     [train_DRF_clas.py:98] Batch: 0-34, loss = 46.398
+2022-11-15 21:47:33 INFO     [train_DRF_clas.py:98] Batch: 0-35, loss = 47.530
+2022-11-15 21:47:34 INFO     [train_DRF_clas.py:98] Batch: 0-36, loss = 48.436
+2022-11-15 21:47:35 INFO     [train_DRF_clas.py:98] Batch: 0-37, loss = 48.988
+2022-11-15 21:47:37 INFO     [train_DRF_clas.py:98] Batch: 0-38, loss = 50.062
+2022-11-15 21:47:38 INFO     [train_DRF_clas.py:98] Batch: 0-39, loss = 50.955
+2022-11-15 21:47:39 INFO     [train_DRF_clas.py:98] Batch: 0-40, loss = 52.225
+2022-11-15 21:47:41 INFO     [train_DRF_clas.py:98] Batch: 0-41, loss = 53.767
+2022-11-15 21:47:42 INFO     [train_DRF_clas.py:98] Batch: 0-42, loss = 54.395
+2022-11-15 21:47:44 INFO     [train_DRF_clas.py:98] Batch: 0-43, loss = 55.110
+2022-11-15 21:47:45 INFO     [train_DRF_clas.py:98] Batch: 0-44, loss = 56.231
+2022-11-15 21:47:46 INFO     [train_DRF_clas.py:98] Batch: 0-45, loss = 56.576
+2022-11-15 21:47:48 INFO     [train_DRF_clas.py:98] Batch: 0-46, loss = 58.396
+2022-11-15 21:47:50 INFO     [train_DRF_clas.py:98] Batch: 0-47, loss = 59.812
+2022-11-15 21:47:51 INFO     [train_DRF_clas.py:98] Batch: 0-48, loss = 60.727
+2022-11-15 21:47:53 INFO     [train_DRF_clas.py:98] Batch: 0-49, loss = 61.388
+2022-11-15 21:47:54 INFO     [train_DRF_clas.py:98] Batch: 0-50, loss = 62.428
+2022-11-15 21:47:56 INFO     [train_DRF_clas.py:98] Batch: 0-51, loss = 63.700
+2022-11-15 21:47:57 INFO     [train_DRF_clas.py:98] Batch: 0-52, loss = 64.552
+2022-11-15 21:47:59 INFO     [train_DRF_clas.py:98] Batch: 0-53, loss = 65.573
+2022-11-15 21:48:00 INFO     [train_DRF_clas.py:98] Batch: 0-54, loss = 66.392
+2022-11-15 21:48:02 INFO     [train_DRF_clas.py:98] Batch: 0-55, loss = 67.363
+2022-11-15 21:48:03 INFO     [train_DRF_clas.py:98] Batch: 0-56, loss = 68.454
+2022-11-15 21:48:05 INFO     [train_DRF_clas.py:98] Batch: 0-57, loss = 69.469
+2022-11-15 21:48:06 INFO     [train_DRF_clas.py:98] Batch: 0-58, loss = 69.689
+2022-11-15 21:48:08 INFO     [train_DRF_clas.py:98] Batch: 0-59, loss = 71.492
+2022-11-15 21:48:09 INFO     [train_DRF_clas.py:98] Batch: 0-60, loss = 72.460
+2022-11-15 21:48:11 INFO     [train_DRF_clas.py:98] Batch: 0-61, loss = 73.058
+2022-11-15 21:48:13 INFO     [train_DRF_clas.py:98] Batch: 0-62, loss = 73.673
+2022-11-15 21:48:14 INFO     [train_DRF_clas.py:98] Batch: 0-63, loss = 74.732
+2022-11-15 21:48:16 INFO     [train_DRF_clas.py:98] Batch: 0-64, loss = 75.962
+2022-11-15 21:48:17 INFO     [train_DRF_clas.py:98] Batch: 0-65, loss = 76.248
+2022-11-15 21:48:19 INFO     [train_DRF_clas.py:98] Batch: 0-66, loss = 76.548
+2022-11-15 21:48:21 INFO     [train_DRF_clas.py:98] Batch: 0-67, loss = 77.184
+2022-11-15 21:48:22 INFO     [train_DRF_clas.py:98] Batch: 0-68, loss = 77.763
+2022-11-15 21:48:23 INFO     [train_DRF_clas.py:98] Batch: 0-69, loss = 78.526
+2022-11-15 21:48:25 INFO     [train_DRF_clas.py:98] Batch: 0-70, loss = 79.226
+2022-11-15 21:48:26 INFO     [train_DRF_clas.py:98] Batch: 0-71, loss = 79.986
+2022-11-15 21:48:28 INFO     [train_DRF_clas.py:98] Batch: 0-72, loss = 80.307
+2022-11-15 21:48:29 INFO     [train_DRF_clas.py:98] Batch: 0-73, loss = 81.200
+2022-11-15 21:48:30 INFO     [train_DRF_clas.py:98] Batch: 0-74, loss = 82.235
+2022-11-15 21:48:32 INFO     [train_DRF_clas.py:98] Batch: 0-75, loss = 82.886
+2022-11-15 21:48:33 INFO     [train_DRF_clas.py:98] Batch: 0-76, loss = 83.426
+2022-11-15 21:48:35 INFO     [train_DRF_clas.py:98] Batch: 0-77, loss = 84.237
+2022-11-15 21:48:36 INFO     [train_DRF_clas.py:98] Batch: 0-78, loss = 84.960
+2022-11-15 21:48:38 INFO     [train_DRF_clas.py:98] Batch: 0-79, loss = 86.783
+2022-11-15 21:48:40 INFO     [train_DRF_clas.py:98] Batch: 0-80, loss = 87.698
+2022-11-15 21:48:40 INFO     [train_DRF_clas.py:98] Batch: 0-81, loss = 89.945
+2022-11-15 21:48:40 INFO     [train_DRF_clas.py:122] Epoch = 0, Epoch_Loss = 1.0968844759755019, Accuracy = 56.01965601965602
+2022-11-15 21:48:43 INFO     [train_DRF_clas.py:147] Epoch = 0, validation_Loss = 1.098758228123188, Accuracy validation= 66.66666666666667
+2022-11-15 21:48:43 INFO     [train_DRF_clas.py:53] Start epoch 1
+2022-11-15 21:48:43 INFO     [train_DRF_clas.py:58] lr = 0
+2022-11-15 21:48:45 INFO     [train_DRF_clas.py:98] Batch: 1-0, loss = 0.940
+2022-11-15 21:48:46 INFO     [train_DRF_clas.py:98] Batch: 1-1, loss = 1.296
+2022-11-15 21:48:47 INFO     [train_DRF_clas.py:98] Batch: 1-2, loss = 3.102
+2022-11-15 21:48:48 INFO     [train_DRF_clas.py:98] Batch: 1-3, loss = 3.556
+2022-11-15 21:48:49 INFO     [train_DRF_clas.py:98] Batch: 1-4, loss = 4.112
+2022-11-15 21:48:51 INFO     [train_DRF_clas.py:98] Batch: 1-5, loss = 4.773
+2022-11-15 21:48:52 INFO     [train_DRF_clas.py:98] Batch: 1-6, loss = 5.208
+2022-11-15 21:48:53 INFO     [train_DRF_clas.py:98] Batch: 1-7, loss = 5.603
+2022-11-15 21:48:54 INFO     [train_DRF_clas.py:98] Batch: 1-8, loss = 6.486
+2022-11-15 21:48:55 INFO     [train_DRF_clas.py:98] Batch: 1-9, loss = 7.426
+2022-11-15 21:48:56 INFO     [train_DRF_clas.py:98] Batch: 1-10, loss = 8.217
+2022-11-15 21:48:58 INFO     [train_DRF_clas.py:98] Batch: 1-11, loss = 8.974
+2022-11-15 21:48:59 INFO     [train_DRF_clas.py:98] Batch: 1-12, loss = 9.783
+2022-11-15 21:49:00 INFO     [train_DRF_clas.py:98] Batch: 1-13, loss = 11.093
+2022-11-15 21:49:01 INFO     [train_DRF_clas.py:98] Batch: 1-14, loss = 11.917
+2022-11-15 21:49:02 INFO     [train_DRF_clas.py:98] Batch: 1-15, loss = 12.733
+2022-11-15 21:49:04 INFO     [train_DRF_clas.py:98] Batch: 1-16, loss = 13.826
+2022-11-15 21:49:05 INFO     [train_DRF_clas.py:98] Batch: 1-17, loss = 14.410
+2022-11-15 21:49:06 INFO     [train_DRF_clas.py:98] Batch: 1-18, loss = 14.866
+2022-11-15 21:49:08 INFO     [train_DRF_clas.py:98] Batch: 1-19, loss = 15.821
+2022-11-15 21:49:09 INFO     [train_DRF_clas.py:98] Batch: 1-20, loss = 16.879
+2022-11-15 21:49:10 INFO     [train_DRF_clas.py:98] Batch: 1-21, loss = 17.897
+2022-11-15 21:49:11 INFO     [train_DRF_clas.py:98] Batch: 1-22, loss = 18.943
+2022-11-15 21:49:12 INFO     [train_DRF_clas.py:98] Batch: 1-23, loss = 19.785
+2022-11-15 21:49:13 INFO     [train_DRF_clas.py:98] Batch: 1-24, loss = 20.493
+2022-11-15 21:49:14 INFO     [train_DRF_clas.py:98] Batch: 1-25, loss = 21.320
+2022-11-15 21:49:16 INFO     [train_DRF_clas.py:98] Batch: 1-26, loss = 21.983
+2022-11-15 21:49:17 INFO     [train_DRF_clas.py:98] Batch: 1-27, loss = 22.907
+2022-11-15 21:49:18 INFO     [train_DRF_clas.py:98] Batch: 1-28, loss = 23.295
+2022-11-15 21:49:19 INFO     [train_DRF_clas.py:98] Batch: 1-29, loss = 23.915
+2022-11-15 21:49:20 INFO     [train_DRF_clas.py:98] Batch: 1-30, loss = 24.811
+2022-11-15 21:49:22 INFO     [train_DRF_clas.py:98] Batch: 1-31, loss = 25.205
+2022-11-15 21:49:23 INFO     [train_DRF_clas.py:98] Batch: 1-32, loss = 25.984
+2022-11-15 21:49:24 INFO     [train_DRF_clas.py:98] Batch: 1-33, loss = 26.587
+2022-11-15 21:49:25 INFO     [train_DRF_clas.py:98] Batch: 1-34, loss = 27.041
+2022-11-15 21:49:26 INFO     [train_DRF_clas.py:98] Batch: 1-35, loss = 27.650
+2022-11-15 21:49:28 INFO     [train_DRF_clas.py:98] Batch: 1-36, loss = 28.237
+2022-11-15 21:49:29 INFO     [train_DRF_clas.py:98] Batch: 1-37, loss = 28.355
+2022-11-15 21:49:30 INFO     [train_DRF_clas.py:98] Batch: 1-38, loss = 28.878
+2022-11-15 21:49:31 INFO     [train_DRF_clas.py:98] Batch: 1-39, loss = 29.064
+2022-11-15 21:49:33 INFO     [train_DRF_clas.py:98] Batch: 1-40, loss = 29.370
+2022-11-15 21:49:34 INFO     [train_DRF_clas.py:98] Batch: 1-41, loss = 29.800
+2022-11-15 21:49:35 INFO     [train_DRF_clas.py:98] Batch: 1-42, loss = 30.210
+2022-11-15 21:49:36 INFO     [train_DRF_clas.py:98] Batch: 1-43, loss = 30.891
+2022-11-15 21:49:37 INFO     [train_DRF_clas.py:98] Batch: 1-44, loss = 32.475
+2022-11-15 21:49:39 INFO     [train_DRF_clas.py:98] Batch: 1-45, loss = 33.055
+2022-11-15 21:49:40 INFO     [train_DRF_clas.py:98] Batch: 1-46, loss = 33.989
+2022-11-15 21:49:41 INFO     [train_DRF_clas.py:98] Batch: 1-47, loss = 34.378
+2022-11-15 21:49:42 INFO     [train_DRF_clas.py:98] Batch: 1-48, loss = 34.640
+2022-11-15 21:49:44 INFO     [train_DRF_clas.py:98] Batch: 1-49, loss = 35.263
+2022-11-15 21:49:45 INFO     [train_DRF_clas.py:98] Batch: 1-50, loss = 35.968
+2022-11-15 21:49:46 INFO     [train_DRF_clas.py:98] Batch: 1-51, loss = 36.293
+2022-11-15 21:49:47 INFO     [train_DRF_clas.py:98] Batch: 1-52, loss = 37.063
+2022-11-15 21:49:48 INFO     [train_DRF_clas.py:98] Batch: 1-53, loss = 37.699
+2022-11-15 21:49:50 INFO     [train_DRF_clas.py:98] Batch: 1-54, loss = 38.840
+2022-11-15 21:49:51 INFO     [train_DRF_clas.py:98] Batch: 1-55, loss = 39.241
+2022-11-15 21:49:52 INFO     [train_DRF_clas.py:98] Batch: 1-56, loss = 39.671
+2022-11-15 21:49:53 INFO     [train_DRF_clas.py:98] Batch: 1-57, loss = 40.205
+2022-11-15 21:49:55 INFO     [train_DRF_clas.py:98] Batch: 1-58, loss = 40.960
+2022-11-15 21:49:56 INFO     [train_DRF_clas.py:98] Batch: 1-59, loss = 41.586
+2022-11-15 21:49:57 INFO     [train_DRF_clas.py:98] Batch: 1-60, loss = 42.160
+2022-11-15 21:49:58 INFO     [train_DRF_clas.py:98] Batch: 1-61, loss = 43.008
+2022-11-15 21:49:59 INFO     [train_DRF_clas.py:98] Batch: 1-62, loss = 43.390
+2022-11-15 21:50:00 INFO     [train_DRF_clas.py:98] Batch: 1-63, loss = 44.053
+2022-11-15 21:50:02 INFO     [train_DRF_clas.py:98] Batch: 1-64, loss = 45.428
+2022-11-15 21:50:03 INFO     [train_DRF_clas.py:98] Batch: 1-65, loss = 46.750
+2022-11-15 21:50:04 INFO     [train_DRF_clas.py:98] Batch: 1-66, loss = 47.224
+2022-11-15 21:50:06 INFO     [train_DRF_clas.py:98] Batch: 1-67, loss = 48.291
+2022-11-15 21:50:07 INFO     [train_DRF_clas.py:98] Batch: 1-68, loss = 49.342
+2022-11-15 21:50:08 INFO     [train_DRF_clas.py:98] Batch: 1-69, loss = 49.688
+2022-11-15 21:50:09 INFO     [train_DRF_clas.py:98] Batch: 1-70, loss = 50.115
+2022-11-15 21:50:11 INFO     [train_DRF_clas.py:98] Batch: 1-71, loss = 50.530
+2022-11-15 21:50:12 INFO     [train_DRF_clas.py:98] Batch: 1-72, loss = 52.510
+2022-11-15 21:50:13 INFO     [train_DRF_clas.py:98] Batch: 1-73, loss = 53.536
+2022-11-15 21:50:14 INFO     [train_DRF_clas.py:98] Batch: 1-74, loss = 54.285
+2022-11-15 21:50:15 INFO     [train_DRF_clas.py:98] Batch: 1-75, loss = 54.990
+2022-11-15 21:50:16 INFO     [train_DRF_clas.py:98] Batch: 1-76, loss = 55.474
+2022-11-15 21:50:18 INFO     [train_DRF_clas.py:98] Batch: 1-77, loss = 56.007
+2022-11-15 21:50:19 INFO     [train_DRF_clas.py:98] Batch: 1-78, loss = 57.253
+2022-11-15 21:50:20 INFO     [train_DRF_clas.py:98] Batch: 1-79, loss = 57.779
+2022-11-15 21:50:21 INFO     [train_DRF_clas.py:98] Batch: 1-80, loss = 59.826
+2022-11-15 21:50:22 INFO     [train_DRF_clas.py:98] Batch: 1-81, loss = 59.862
+2022-11-15 21:50:22 INFO     [train_DRF_clas.py:122] Epoch = 1, Epoch_Loss = 0.7300238005090051, Accuracy = 62.8992628992629
+2022-11-15 21:50:25 INFO     [train_DRF_clas.py:147] Epoch = 1, validation_Loss = 1.1687127351760864, Accuracy validation= 66.66666666666667
+2022-11-15 21:50:25 INFO     [train_DRF_clas.py:53] Start epoch 2
+2022-11-15 21:50:25 INFO     [train_DRF_clas.py:58] lr = 0
+2022-11-15 21:50:26 INFO     [train_DRF_clas.py:98] Batch: 2-0, loss = 1.614
+2022-11-15 21:50:27 INFO     [train_DRF_clas.py:98] Batch: 2-1, loss = 4.851
+2022-11-15 21:50:29 INFO     [train_DRF_clas.py:98] Batch: 2-2, loss = 5.362
+2022-11-15 21:50:30 INFO     [train_DRF_clas.py:98] Batch: 2-3, loss = 6.166
+2022-11-15 21:50:31 INFO     [train_DRF_clas.py:98] Batch: 2-4, loss = 6.855
+2022-11-15 21:50:32 INFO     [train_DRF_clas.py:98] Batch: 2-5, loss = 7.581
+2022-11-15 21:50:33 INFO     [train_DRF_clas.py:98] Batch: 2-6, loss = 8.484
+2022-11-15 21:50:34 INFO     [train_DRF_clas.py:98] Batch: 2-7, loss = 10.096
+2022-11-15 21:50:36 INFO     [train_DRF_clas.py:98] Batch: 2-8, loss = 10.858
+2022-11-15 21:50:37 INFO     [train_DRF_clas.py:98] Batch: 2-9, loss = 11.581
+2022-11-15 21:50:38 INFO     [train_DRF_clas.py:98] Batch: 2-10, loss = 11.794
+2022-11-15 21:50:39 INFO     [train_DRF_clas.py:98] Batch: 2-11, loss = 12.450
+2022-11-15 21:50:40 INFO     [train_DRF_clas.py:98] Batch: 2-12, loss = 13.015
+2022-11-15 21:50:41 INFO     [train_DRF_clas.py:98] Batch: 2-13, loss = 13.649
+2022-11-15 21:50:43 INFO     [train_DRF_clas.py:98] Batch: 2-14, loss = 14.351
+2022-11-15 21:50:44 INFO     [train_DRF_clas.py:98] Batch: 2-15, loss = 15.156
+2022-11-15 21:50:45 INFO     [train_DRF_clas.py:98] Batch: 2-16, loss = 16.424
+2022-11-15 21:50:46 INFO     [train_DRF_clas.py:98] Batch: 2-17, loss = 17.322
+2022-11-15 21:50:47 INFO     [train_DRF_clas.py:98] Batch: 2-18, loss = 17.926
+2022-11-15 21:50:49 INFO     [train_DRF_clas.py:98] Batch: 2-19, loss = 18.665
+2022-11-15 21:50:50 INFO     [train_DRF_clas.py:98] Batch: 2-20, loss = 19.445
+2022-11-15 21:50:51 INFO     [train_DRF_clas.py:98] Batch: 2-21, loss = 19.956
+2022-11-15 21:50:52 INFO     [train_DRF_clas.py:98] Batch: 2-22, loss = 20.650
+2022-11-15 21:50:53 INFO     [train_DRF_clas.py:98] Batch: 2-23, loss = 21.144
+2022-11-15 21:50:55 INFO     [train_DRF_clas.py:98] Batch: 2-24, loss = 21.565
+2022-11-15 21:50:56 INFO     [train_DRF_clas.py:98] Batch: 2-25, loss = 22.545
+2022-11-15 21:50:57 INFO     [train_DRF_clas.py:98] Batch: 2-26, loss = 23.267
+2022-11-15 21:50:58 INFO     [train_DRF_clas.py:98] Batch: 2-27, loss = 23.773
+2022-11-15 21:50:59 INFO     [train_DRF_clas.py:98] Batch: 2-28, loss = 24.028
+2022-11-15 21:51:01 INFO     [train_DRF_clas.py:98] Batch: 2-29, loss = 24.643
+2022-11-15 21:51:02 INFO     [train_DRF_clas.py:98] Batch: 2-30, loss = 25.352
+2022-11-15 21:51:03 INFO     [train_DRF_clas.py:98] Batch: 2-31, loss = 25.720
+2022-11-15 21:51:04 INFO     [train_DRF_clas.py:98] Batch: 2-32, loss = 25.977
+2022-11-15 21:51:05 INFO     [train_DRF_clas.py:98] Batch: 2-33, loss = 26.426
+2022-11-15 21:51:07 INFO     [train_DRF_clas.py:98] Batch: 2-34, loss = 26.873
+2022-11-15 21:51:08 INFO     [train_DRF_clas.py:98] Batch: 2-35, loss = 28.215
+2022-11-15 21:51:09 INFO     [train_DRF_clas.py:98] Batch: 2-36, loss = 28.301
+2022-11-15 21:51:10 INFO     [train_DRF_clas.py:98] Batch: 2-37, loss = 28.715
+2022-11-15 21:51:11 INFO     [train_DRF_clas.py:98] Batch: 2-38, loss = 29.493
+2022-11-15 21:51:12 INFO     [train_DRF_clas.py:98] Batch: 2-39, loss = 29.804
+2022-11-15 21:51:14 INFO     [train_DRF_clas.py:98] Batch: 2-40, loss = 30.461
+2022-11-15 21:51:15 INFO     [train_DRF_clas.py:98] Batch: 2-41, loss = 31.238
+2022-11-15 21:51:16 INFO     [train_DRF_clas.py:98] Batch: 2-42, loss = 32.051
+2022-11-15 21:51:17 INFO     [train_DRF_clas.py:98] Batch: 2-43, loss = 32.506
+2022-11-15 21:51:18 INFO     [train_DRF_clas.py:98] Batch: 2-44, loss = 32.616
+2022-11-15 21:51:20 INFO     [train_DRF_clas.py:98] Batch: 2-45, loss = 33.608
+2022-11-15 21:51:21 INFO     [train_DRF_clas.py:98] Batch: 2-46, loss = 34.426
+2022-11-15 21:51:22 INFO     [train_DRF_clas.py:98] Batch: 2-47, loss = 34.849
+2022-11-15 21:51:23 INFO     [train_DRF_clas.py:98] Batch: 2-48, loss = 36.055
+2022-11-15 21:51:24 INFO     [train_DRF_clas.py:98] Batch: 2-49, loss = 36.243
+2022-11-15 21:51:25 INFO     [train_DRF_clas.py:98] Batch: 2-50, loss = 37.357
+2022-11-15 21:51:27 INFO     [train_DRF_clas.py:98] Batch: 2-51, loss = 37.988
+slurmstepd: error: *** JOB 148314 ON gpu001 CANCELLED AT 2022-11-15T21:51:27 ***

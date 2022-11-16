@@ -1,0 +1,11 @@
+renset-10 constructed
+loading pretrained model ./pretrain/resnet_10.pth
+new_parameters6145
+baseparameters14181696
+Processing 407 datas
+Processing 12 datas
+Current setting is:
+Namespace(augmentation='True', batch_size=5, ci_test=False, data_dir='./data/DRF_data/', gpu_id=[2], input_D=210, input_H=140, input_W=150, label_list='./data/DRF_label_augmented_sets/set_1/train_new_augmented.txt', label_list_val='./data/DRF_label_sets/set_1/validation.txt', learning_rate=0.0001, manual_seed=1, method='method3_a_v21', methodnr='3', model='resnet', model_depth=10, n_epochs=100, n_seg_classes=2, new_layer_names=['classification1', 'classification2'], no_cuda=False, num_workers=1, phase='train', pin_memory=True, pretrain_path='./pretrain/resnet_10.pth', pretrained=True, resnet_shortcut='A', results_file='results/method3_a_v21_train_set1.csv', resume_path='', save_folder='./trails/DRF_models/methodmethod2_v21_set1', save_intervals=50, save_trails=False, setnr='1', version='21')
+
+
+
