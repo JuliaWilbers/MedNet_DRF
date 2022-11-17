@@ -143,18 +143,23 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
           # Calculate and log validation loss and accuracy
           vacc = 100. * vcorrect / vtotal
           vloss = running_vloss / len(validation_loader)
+        
           val_l.append(vloss)
           log.info('Epoch = {}, validation_Loss = {}, Accuracy validation= {}'.format(epoch, vloss, vacc))
           lacc_l.append(vacc)
           scheduler.step(vloss)
-            
+          if epoch == 0:
+            val_l.append(tloss)
+          else:
+            val_l.append(vloss)
+              
         # Save best model (model with lowest validation loss)   
         if epoch == 0:
-            best_val_loss  = vloss
+            best_val_loss  = tloss
             
         if vloss < best_val_loss:
           best_val_loss = vloss
-          model_save_path = '{}_best.pth.tar'.format(save_folder)
+          model_save_path = './trails/DRF_models/{}_set_{}best.pth.tar'.format(sets.method, sets.setnr)
           log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
           torch.save({
             'epoch': epoch,
@@ -174,7 +179,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
     plt.title("Learning Curve Experiment {}".format(sets.method))
-    plt.savefig('./results/{}_set_{}lc.png'.format(sets.method, sets.setnr))
+    plt.savefig('./results/{}_set_{}_lc.png'.format(sets.method, sets.setnr))
     
     if sets.ci_test:
         exit()

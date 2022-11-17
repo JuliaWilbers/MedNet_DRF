@@ -27,13 +27,19 @@ def test(results_test_file, data_loader, model, sets):
     handler = logging.FileHandler(results_test_file, mode = 'w')
     logger.addHandler(handler)
     
+    pl = []
+    ypl =[]
+    tl =[]
+    
     for batch_id, batch_data in enumerate(data_loader):
         # forward
-        volumes, labels, name = batch_data
+        volumes, masks, labels, name = batch_data
         if not sets.no_cuda:
             volume = volume.cuda()
+            labels = labels.cuda()
+            masks = masks.cuda()
         with torch.no_grad():
-            y_pb = model(volumes)
+            y_pb = model(volumes, masks)
             y_pred = torch.round(y_pb)
             y_pred = y_pred.squeeze()
             y_true = labels.squeeze()
@@ -45,8 +51,13 @@ def test(results_test_file, data_loader, model, sets):
             
             
             logger.warning('Patient = {}, Post_prob = {}, Label = {}'.format(name, y_pb.item(), labels.item()))
-
+            pl.append(name)
+            tl.append(labels.item())
+            ypl.append(y_pb.item())
             
+    #store results
+    df = pd.DataFrame(list(zip(*[pl, tl, ypl])), columns = ['Patient', 'true label', 'posterior prob'])
+    df.to_csv(sets.results_file, index=False)        
     return test_acc, test_loss
 
 
@@ -75,7 +86,7 @@ if __name__ == '__main__':
     else:
         sets.method ='method{}_v{}'.format(sets.methodnr, sets.version)
     
-    results_test_file = "results/{}_{}_{}_{}_{}.log".format(sets.model, sets.model_depth, sets.phase, sets.set_name, sets.method)
+    results_test_file = "results/{}_{}_{}_{}_{}.csv".format(sets.model, sets.model_depth, sets.phase, sets.set_name, sets.method)
     
     # getting model
     print ('loading trained model {}'.format(sets.resume_path))
