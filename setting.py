@@ -54,11 +54,11 @@ def parse_opts():
         help='Use augmentation')
     parser.add_argument(
         '--save_trails',
-        default=False,
+        default=True,
         help='Store trails')
     parser.add_argument(
         '--save_intervals',
-        default=50,
+        default=10,
         type=int,
         help='Interation for saving model')
     parser.add_argument(

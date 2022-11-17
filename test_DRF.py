@@ -13,6 +13,7 @@ from utils.file_process import load_lines
 import numpy as np
 from torch import nn
 import logging
+import pandas as pd
 
 def accuracy_fn(y_true, y_pred, batch_size):
     correct = torch.eq(y_true, y_pred).sum().item() 
@@ -22,10 +23,6 @@ def accuracy_fn(y_true, y_pred, batch_size):
 def test(results_test_file, data_loader, model, sets):
     model.eval() # for testing 
     loss_clas = nn.BCELoss()
-    
-    logger = logging.getLogger('mylogger')
-    handler = logging.FileHandler(results_test_file, mode = 'w')
-    logger.addHandler(handler)
     
     pl = []
     ypl =[]
@@ -49,15 +46,13 @@ def test(results_test_file, data_loader, model, sets):
             
             print(f"Test loss: {test_loss:.5f}, Test acc: {test_acc:.2f}%")
             
-            
-            logger.warning('Patient = {}, Post_prob = {}, Label = {}'.format(name, y_pb.item(), labels.item()))
             pl.append(name)
             tl.append(labels.item())
             ypl.append(y_pb.item())
             
     #store results
     df = pd.DataFrame(list(zip(*[pl, tl, ypl])), columns = ['Patient', 'true label', 'posterior prob'])
-    df.to_csv(sets.results_file, index=False)        
+    df.to_csv(results_test_file, index=False)        
     return test_acc, test_loss
 
 
@@ -77,8 +72,8 @@ if __name__ == '__main__':
     sets.batch_size= 1
     
     # Change
-    sets.im_dir = "./toy_data/Images/"
-    sets.label_list = './toy_data/DRF_label_sets/set_{}/test.txt'.format(sets.setnr)
+    sets.data_dir = './data/DRF_data/'
+    sets.label_list = sets.label_list = './data/DRF_label_sets/set_{}/test.txt'.format(sets.setnr)
     sets.set_name = 'set_{}'.format(sets.setnr)
     
     if sets.augmentation == True:
@@ -86,7 +81,7 @@ if __name__ == '__main__':
     else:
         sets.method ='method{}_v{}'.format(sets.methodnr, sets.version)
     
-    results_test_file = "results/{}_{}_{}_{}_{}.csv".format(sets.model, sets.model_depth, sets.phase, sets.set_name, sets.method)
+    results_test_file = "./results/{}_{}_{}.csv".format(sets.method, sets.phase, sets.set_name)
     
     # getting model
     print ('loading trained model {}'.format(sets.resume_path))
@@ -95,7 +90,7 @@ if __name__ == '__main__':
     net.load_state_dict(checkpoint['state_dict'], strict=False)
 
     # data tensor
-    testing_data =DRF_data(sets.im_dir, sets.label_list, sets)
+    testing_data =DRF_data(sets.data_dir, sets.label_list, sets)
   
     data_loader = DataLoader(testing_data, batch_size=1, shuffle=False, num_workers=1, pin_memory=False)
     

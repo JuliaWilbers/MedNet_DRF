@@ -77,7 +77,7 @@ class DRF_data(Dataset):
             img_array = self.__nii2tensorarray__(img_array)
             mask_array = self.__nii2tensorarray__(mask_array)
 
-            return img_array, masks, label, self.name
+            return img_array, mask_array, label, self.name
 
     def __itensity_normalize_one_volume__(self, volume):
         """

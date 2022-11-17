@@ -96,23 +96,6 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
             log.info(
                 'Batch: {}-{}, loss = {:.3f}' \
                     .format(epoch, batch_id, running_loss))
-            
-            if not sets.ci_test:
-                # save model every x times
-                if batch_id == 0 and sets.save_trails == True and batch_id_sp != 0 and batch_id_sp % save_interval == 0:
-                    # if batch_id_sp != 0 and batch_id_sp % save_interval == 0:
-                    model_save_path = '{}_epoch_{}_batch_{}.pth.tar'.format(save_folder, epoch, batch_id)
-                    model_save_dir = os.path.dirname(model_save_path)
-                    if not os.path.exists(model_save_dir):
-                        os.makedirs(model_save_dir)
-
-                    log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
-                    torch.save({
-                        'epoch': epoch,
-                        'batch_id': batch_id,
-                        'state_dict': model.state_dict(),
-                        'optimizer': optimizer.state_dict()},
-                        model_save_path)
 
         # Calculate and log epoch loss and accuracy
         epoch_acc = 100. * correct / total
@@ -152,11 +135,22 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
             val_l.append(tloss)
           else:
             val_l.append(vloss)
+        
+        # Save model in interval
+        if sets.save_trails == True and epoch %10 == sets.save_intervals:
+          model_save_path = './trails/DRF_models/{}_set_{}_int_ep{}.pth.tar'.format(sets.method, sets.setnr, epoch)
+          log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
+          torch.save({
+          'epoch': epoch,
+          'batch_id': batch_id,
+          'state_dict': model.state_dict(),
+          'optimizer': optimizer.state_dict()},
+          model_save_path)
               
-        # Save best model (model with lowest validation loss)   
+        # Save best / last model (model with lowest validation loss)   
         if epoch == 0:
-            best_val_loss  = tloss
-            
+            best_val_loss  = vloss
+                
         if vloss < best_val_loss:
           best_val_loss = vloss
           model_save_path = './trails/DRF_models/{}_set_{}best.pth.tar'.format(sets.method, sets.setnr)
@@ -166,6 +160,16 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
             'state_dict': model.state_dict(),
             'optimizer': optimizer.state_dict()}, 
             model_save_path)
+            
+        elif epoch == (total_epochs-1):
+          model_save_path = './trails/DRF_models/{}_set_{}last.pth.tar'.format(sets.method, sets.setnr)
+          log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
+          torch.save({
+          'epoch': epoch,
+          'state_dict': model.state_dict(),
+          'optimizer': optimizer.state_dict()}, 
+          model_save_path)
+          
 
     print('Finished training')
     
@@ -196,6 +200,7 @@ if __name__ == '__main__':
     sets.input_W = 150  # X
     sets.learning_rate = 0.0001
     sets.data_dir = './data/DRF_data/'
+    
 
     # Check /change
     if sets.augmentation == 'True':
