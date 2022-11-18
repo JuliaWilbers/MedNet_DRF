@@ -137,7 +137,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
             val_l.append(vloss)
         
         # Save model in interval
-        if sets.save_trails == True and epoch %10 == sets.save_intervals:
+        if epoch %10 == sets.save_intervals:
           model_save_path = './trails/DRF_models/{}_set_{}_int_ep{}.pth.tar'.format(sets.method, sets.setnr, epoch)
           log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
           torch.save({

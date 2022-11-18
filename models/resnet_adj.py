@@ -149,7 +149,7 @@ class ResNet(nn.Module):
                                                 )
                                                 
         self.classification2 = nn.Sequential(
-                                                nn.Dropout(p=0.2),
+                                                nn.Dropout(p=0.5),
                                                 nn.Linear(outsize,1),
                                                 #nn.ReLU(),
                                                 nn.Sigmoid()

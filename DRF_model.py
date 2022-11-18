@@ -72,16 +72,16 @@ def generate_model(opt):
     
     if not opt.no_cuda:
         if len(opt.gpu_id) > 1:
-            #torch.backends.cudnn.enabled = False
+            torch.backends.cudnn.enabled = False
             model = model.cuda() 
-            #model = nn.DataParallel(model, device_ids=opt.gpu_id)
+            model = nn.DataParallel(model, device_ids=None)
             net_dict = model.state_dict() 
         else:
             import os
             os.environ["CUDA_VISIBLE_DEVICES"]=str(opt.gpu_id[0])
-            #torch.backends.cudnn.enabled = False
+            torch.backends.cudnn.enabled = False
             model = model.cuda() 
-            #model = nn.DataParallel(model, device_ids=None)
+            model = nn.DataParallel(model, device_ids=None)
             net_dict = model.state_dict()
     else:
         net_dict = model.state_dict()
