@@ -131,13 +131,9 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
           log.info('Epoch = {}, validation_Loss = {}, Accuracy validation= {}'.format(epoch, vloss, vacc))
           lacc_l.append(vacc)
           scheduler.step(vloss)
-          if epoch == 0:
-            val_l.append(tloss)
-          else:
-            val_l.append(vloss)
         
         # Save model in interval
-        if epoch %10 == sets.save_intervals:
+        if epoch in [10,20,30,40,50,60,70,80,90]:
           model_save_path = './trails/DRF_models/{}_set_{}_int_ep{}.pth.tar'.format(sets.method, sets.setnr, epoch)
           log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
           torch.save({
@@ -174,7 +170,9 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
     print('Finished training')
     
     # Store results
-    df = pd.DataFrame(list(zip(*[epoch_l, train_l, val_l, tacc_l, lacc_l])), columns = ['Epoch', 'training_loss', 'validation_loss', 'training acc', 'validation acc'])
+    df = pd.DataFrame(
+        list(zip(*[epoch_l, train_l, val_l, tacc_l, lacc_l])), 
+        columns = ['Epoch', 'training_loss', 'validation_loss', 'training acc',   'validation acc'])
     df.to_csv(sets.results_file, index=False)
     
     # Store learning curve

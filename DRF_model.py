@@ -71,18 +71,10 @@ def generate_model(opt):
                 num_seg_classes=opt.n_seg_classes)
     
     if not opt.no_cuda:
-        if len(opt.gpu_id) > 1:
-            torch.backends.cudnn.enabled = False
-            model = model.cuda() 
-            model = nn.DataParallel(model, device_ids=None)
-            net_dict = model.state_dict() 
-        else:
-            import os
-            os.environ["CUDA_VISIBLE_DEVICES"]=str(opt.gpu_id[0])
-            torch.backends.cudnn.enabled = False
-            model = model.cuda() 
-            model = nn.DataParallel(model, device_ids=None)
-            net_dict = model.state_dict()
+      torch.backends.cudnn.enabled = False   #for CUDA mapping error 
+      model = model.cuda() 
+      #model = nn.DataParallel(model, device_ids=None)
+      net_dict = model.state_dict() 
     else:
         net_dict = model.state_dict()
     
@@ -101,10 +93,10 @@ def generate_model(opt):
             if pname.find(layer_name) >= 0:
               new_parameters.append(p)
               break
-        print('new_parameters' + str(count_parameters(new_parameters)))
+        print('new_parameters: ' + str(count_parameters(new_parameters)))
         new_parameters_id = list(map(id, new_parameters))
         base_parameters = list(filter(lambda p: id(p) not in new_parameters_id, model.parameters()))
-        print('baseparameters' + str(count_parameters(base_parameters)))
+        print('baseparameters: ' + str(count_parameters(base_parameters)))
         parameters = {'base_parameters': base_parameters, 
                       'new_parameters': new_parameters}
 

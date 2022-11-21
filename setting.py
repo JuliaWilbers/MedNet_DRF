@@ -126,11 +126,6 @@ def parse_opts():
         '--no_cuda', action='store_true', help='If true, cuda is not used.')
     parser.set_defaults(no_cuda=False)
     parser.add_argument(
-        '--gpu_id',
-        nargs='+',
-        type=int,
-        help='Gpu id lists')
-    parser.add_argument(
         '--model',
         default='resnet',
         type=str,
