@@ -49,6 +49,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
     train_time_sp = time.time()
     epoch_l, val_l, train_l, tacc_l, lacc_l = ([] for i in range(5))
     log.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
+    log.info('Set {} {}'.format(sets.setnr, sets.method))
     for epoch in range(total_epochs):
         log.info('Start epoch {}'.format(epoch))
         
