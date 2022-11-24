@@ -119,7 +119,7 @@ def parse_opts():
     parser.add_argument(
         '--new_layer_names',
         #default=['maxpool2', 'flatten', 'linear', 'relu', 'sigmoid'],
-        default=['classification1', 'classification2'],
+        default=['layer4','classification1', 'classification2'],
         type=list,
         help='New layer except for backbone')
     parser.add_argument(

@@ -230,7 +230,7 @@ if __name__ == '__main__':
 
     if sets.pretrained:
         params = [
-            {'params': parameters['base_parameters'], 'lr': sets.learning_rate},
+            {'params': parameters['base_parameters'], 'lr': 0},
             {'params': parameters['new_parameters'], 'lr': sets.learning_rate}
             ]
 
