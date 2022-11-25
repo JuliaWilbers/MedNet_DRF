@@ -134,7 +134,7 @@ def train(data_loader, validation_loader, model, optimizer, scheduler, total_epo
           scheduler.step(vloss)
         
         # Save model in interval
-        if epoch in [10,20,30,40,50,60,70,80,90]:
+        if epoch in [10,20,30]:
           model_save_path = './trails/DRF_models/{}_set_{}_int_ep{}.pth.tar'.format(sets.method, sets.setnr, epoch)
           log.info('Save checkpoints: epoch = {}, batch_id = {}'.format(epoch, batch_id))
           torch.save({
