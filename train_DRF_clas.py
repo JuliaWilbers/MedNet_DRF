@@ -214,9 +214,11 @@ if __name__ == '__main__':
     # Check / change method 2
     if sets.methodnr == '2':
         sets.pretrained = False
+        log.info("No pre-trained weights loaded")
     else:
         sets.pretrain_path = './pretrain/resnet_10.pth'
         sets.pretrained = True
+        log.info("Pre-trained weights loaded")
 
     # Set name of the results file
     sets.results_file = "results/{}_{}_set{}.csv".format(sets.method, sets.phase, sets.setnr)
@@ -229,11 +231,11 @@ if __name__ == '__main__':
     # optimizer
 
     if sets.pretrained:
+        log.info("Pre-trained weights used")
         params = [
             {'params': parameters['base_parameters'], 'lr': 0},
             {'params': parameters['new_parameters'], 'lr': sets.learning_rate}
             ]
-
         # {'params': parameters['new_parameters'], 'lr': sets.learning_rate * 100}]
     else:
         params = [{'params': parameters, 'lr': sets.learning_rate}]

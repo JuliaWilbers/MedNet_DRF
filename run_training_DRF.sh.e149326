@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "train_DRF_clas.py", line 8, in <module>
+    from DRF_model import generate_model
+  File "/trinity/home/jwilbers/MedNet/MedicalNet/DRF_model.py", line 3, in <module>
+    from models import resnet_adj
+  File "/trinity/home/jwilbers/MedNet/MedicalNet/models/resnet_adj.py", line 149
+    nn.Dropout(p=0.5)
+     ^
+SyntaxError: invalid syntax

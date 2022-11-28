@@ -140,18 +140,23 @@ class ResNet(nn.Module):
             block, 256, layers[2], shortcut_type, stride=1, dilation=2)
         self.layer4 = self._make_layer(
             block, 512, layers[3], shortcut_type, stride=1, dilation=4)
-        
+        self.dropout(p=0.5)
         #New added for classification
         #outsize = 165888
         outsize = 6144
+        self.layer4_do = nn.Sequential(
+                                                nn.Conv3d(256,512,kernel_size=3,dilation=1,stride=1,padding=1,bias=False)
+                                                nn.Dropout(p=0.5)
+                                                nn.ReLU(inplace=True)
+                                                nn.Conv3d(512,512,kernel_size=3,dilation=1,stride=1,padding=1,bias=False)
+        
         self.classification1 = nn.Sequential(
                                                 nn.MaxPool3d(7)
                                                 )
                                                 
         self.classification2 = nn.Sequential(
                                                 nn.Dropout(p=0.2),
-                                                nn.Linear(outsize,1),
-                                                #nn.ReLU(),
+                                                nn.Linear(outsize,1)
                                                 nn.Sigmoid()
                                                 )
         
@@ -196,20 +201,16 @@ class ResNet(nn.Module):
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
-        x = self.layer4(x)
+        resisudel = x
+        x = self.layer4_do(x)
+        x += residual
+        x = self.relu(x)
+        x = self.dropout(x)
         y = F.interpolate(y,[27,18,19]) #with nearest neighbohr = default
         x = torch.mul(x,y)
         x = self.classification1(x)
         x = torch.flatten(x, start_dim=1)
         x = self.classification2(x)
-        #x = self.adaptive_avg_pool3d(x)
-        #x = self.maxpool2(x)
-        #x = torch.flatten(x, start_dim=1)
-        #x = self.dropout(x)
-        #x = self.linear(x)
-        #x = self.relu(x)
-        #x = self.sigmoid(x)
-       
         return x
 
 def resnet10(**kwargs):
