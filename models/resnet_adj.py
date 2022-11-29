@@ -58,10 +58,14 @@ class BasicBlock(nn.Module):
         out = self.relu(out)
         out = self.conv2(out)
         out = self.bn2(out)
-
+        
+        print('downsample is:', self.downsample)
         if self.downsample is not None:
             residual = self.downsample(x)
-
+        print('Size residu')    
+        print(residual.size())
+        print('Size x')
+        print(out.size())
         out += residual
         out = self.relu(out)
 
@@ -138,17 +142,17 @@ class ResNet(nn.Module):
             block, 128, layers[1], shortcut_type, stride=2)
         self.layer3 = self._make_layer(
             block, 256, layers[2], shortcut_type, stride=1, dilation=2)
-        self.layer4 = self._make_layer(
-            block, 512, layers[3], shortcut_type, stride=1, dilation=4)
-        self.dropout(p=0.5)
+        #self.layer4 = self._make_layer(block, 512, layers[3], shortcut_type, stride=1, dilation=4)
+        self.dropout = nn.Dropout(p=0.5)
         #New added for classification
         #outsize = 165888
         outsize = 6144
         self.layer4_do = nn.Sequential(
-                                                nn.Conv3d(256,512,kernel_size=3,dilation=1,stride=1,padding=1,bias=False)
-                                                nn.Dropout(p=0.5)
-                                                nn.ReLU(inplace=True)
-                                                nn.Conv3d(512,512,kernel_size=3,dilation=1,stride=1,padding=1,bias=False)
+                                                nn.Conv3d(256,512,kernel_size=3,dilation=4,stride=1,padding=4,bias=False),
+                                                nn.Dropout(p=0.5),
+                                                nn.ReLU(inplace=True),
+                                                nn.Conv3d(512,512,kernel_size=3,dilation=4,stride=1,padding=4,bias=False)
+                                                )
         
         self.classification1 = nn.Sequential(
                                                 nn.MaxPool3d(7)
@@ -156,7 +160,7 @@ class ResNet(nn.Module):
                                                 
         self.classification2 = nn.Sequential(
                                                 nn.Dropout(p=0.2),
-                                                nn.Linear(outsize,1)
+                                                nn.Linear(outsize,1),
                                                 nn.Sigmoid()
                                                 )
         
@@ -201,8 +205,11 @@ class ResNet(nn.Module):
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
-        resisudel = x
+        residual = x
+        residual = downsample_basic_block(residual, 512, stride=1, no_cuda=False)
         x = self.layer4_do(x)
+        print(x.size())
+        print(residual.size())
         x += residual
         x = self.relu(x)
         x = self.dropout(x)
