@@ -59,13 +59,10 @@ class BasicBlock(nn.Module):
         out = self.conv2(out)
         out = self.bn2(out)
         
-        print('downsample is:', self.downsample)
+        
         if self.downsample is not None:
             residual = self.downsample(x)
-        print('Size residu')    
-        print(residual.size())
-        print('Size x')
-        print(out.size())
+        
         out += residual
         out = self.relu(out)
 
@@ -142,19 +139,19 @@ class ResNet(nn.Module):
             block, 128, layers[1], shortcut_type, stride=2)
         self.layer3 = self._make_layer(
             block, 256, layers[2], shortcut_type, stride=1, dilation=2)
-        self.layer4 = self._make_layer(block, 512, layers[3], shortcut_type, stride=1, dilation=4)
+        #self.layer4 = self._make_layer(block, 512, layers[3], shortcut_type, stride=1, dilation=4)
         self.dropout = nn.Dropout(p=0.5)
         outsize = 6144
         
-        """
-        Changed basisblock
+        
+        #Changed basisblock
         self.layer4_do = nn.Sequential(
                                                 nn.Conv3d(256,512,kernel_size=3,dilation=4,stride=1,padding=4,bias=False),
                                                 nn.Dropout(p=0.5),
                                                 nn.ReLU(inplace=True),
                                                 nn.Conv3d(512,512,kernel_size=3,dilation=4,stride=1,padding=4,bias=False)
                                                 )
-        """
+    
                                                 
         
         #New added for classification
@@ -209,10 +206,10 @@ class ResNet(nn.Module):
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
-        x = self.layer4(x) 
+        #x = self.layer4(x) 
 
-        """
-        For changed basisblock:
+        
+        #For changed basisblock:
         
         residual = x
         residual = downsample_basic_block(residual, 512, stride=1, no_cuda=False)
@@ -220,7 +217,7 @@ class ResNet(nn.Module):
         x += residual
         x = self.relu(x)
         x = self.dropout(x)
-        """
+
         
         y = F.interpolate(y,[27,18,19]) #with nearest neighbohr = default
         x = torch.mul(x,y)
