@@ -236,6 +236,9 @@ if __name__ == '__main__':
             {'params': parameters['base_parameters'], 'lr': 0},
             {'params': parameters['new_parameters'], 'lr': sets.learning_rate}
             ]
+        # Freeze base parameters
+        for param in parameters["base_parameters"]:
+            param.requires_grad = False   
         # {'params': parameters['new_parameters'], 'lr': sets.learning_rate * 100}]
     else:
         params = [{'params': parameters, 'lr': sets.learning_rate}]

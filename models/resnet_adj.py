@@ -139,11 +139,11 @@ class ResNet(nn.Module):
             block, 128, layers[1], shortcut_type, stride=2)
         self.layer3 = self._make_layer(
             block, 256, layers[2], shortcut_type, stride=1, dilation=2)
-        #self.layer4 = self._make_layer(block, 512, layers[3], shortcut_type, stride=1, dilation=4)
+        self.layer4 = self._make_layer(block, 512, layers[3], shortcut_type, stride=1, dilation=4)
         self.dropout = nn.Dropout(p=0.5)
         outsize = 6144
         
-        
+        """
         #Changed basisblock
         self.layer4_do = nn.Sequential(
                                                 nn.Conv3d(256,512,kernel_size=3,dilation=4,stride=1,padding=4,bias=False),
@@ -153,7 +153,7 @@ class ResNet(nn.Module):
                                                 )
     
                                                 
-        
+        """
         #New added for classification
         self.classification1 = nn.Sequential(
                                                 nn.MaxPool3d(7)
@@ -206,9 +206,9 @@ class ResNet(nn.Module):
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
-        #x = self.layer4(x) 
+        x = self.layer4(x) 
 
-        
+        """
         #For changed basisblock:
         
         residual = x
@@ -218,7 +218,7 @@ class ResNet(nn.Module):
         x = self.relu(x)
         x = self.dropout(x)
 
-        
+        """
         y = F.interpolate(y,[27,18,19]) #with nearest neighbohr = default
         x = torch.mul(x,y)
         x = self.classification1(x)
