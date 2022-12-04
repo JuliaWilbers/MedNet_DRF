@@ -11,4 +11,4 @@ module load Python/3.7.2-GCCcore-8.2.0
 
 source "/trinity/home/jwilbers/MedNet/MedicalNet/venv_mednet_2/bin/activate"
 
-python train_DRF_clas.py --batch_size 7 --num_workers 1 --model_depth 10 --setnr '4' --methodnr '2' --version '54' --augmentation 'False' --n_epochs 100
+python train_DRF_clas.py --batch_size 7 --num_workers 1 --model_depth 10 --setnr '1' --methodnr '2' --version '55' --augmentation 'False' --n_epochs 100
