@@ -12,4 +12,4 @@ module load Python/3.7.2-GCCcore-8.2.0
 
 source "/trinity/home/jwilbers/MedNet/MedicalNet/venv_mednet_2/bin/activate"
 
-python test_DRF.py --setnr 3 --version 54 --methodnr 2 --resume_path "./trails/DRF_models/method2_v54_set_3_int_ep10.pth.tar" 
+python test_DRF.py --setnr 5 --version 58 --methodnr 2 --resume_path "./trails/DRF_models/method2_v58_set_5best.pth.tar" 
